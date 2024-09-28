@@ -34,7 +34,7 @@ createRoot(document.getElementById('root')!).render(
     <Auth0Provider
       domain="dev-fonj0d63gm875arj.us.auth0.com"
       clientId="pAgZ0Jkd5QnwNTcD2q6JP7r4E75yGP1L"
-      authorizationParams={{ redirect_uri: window.location.origin }}
+      authorizationParams={{ redirect_uri: 'http://localhost:5173/home' }}
     >
       <RouterProvider router={router} />
     </Auth0Provider>

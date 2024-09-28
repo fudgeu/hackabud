@@ -3,9 +3,24 @@ import { Outlet } from 'react-router-dom'
 import Button from '../../components/Button/Button.tsx'
 import { ModalContext } from '../../contexts.ts'
 import { ReactNode, useState } from 'react'
+import { useAuth0 } from '@auth0/auth0-react'
+import { useEffect } from 'react'
+
+import LoginButton from '../../pages/LoginButton/LoginButton.tsx'
+import LogoutButton from '../../pages/LogoutButton/LogoutButton.tsx'
+
 
 export default function RootWrapper() {
   const [modalStack, setModalStack] = useState<ReactNode[]>([])
+  const { user, isLoading, isAuthenticated } = useAuth0()
+  useEffect(() => {
+    if (isAuthenticated) {
+      console.log('Authenticated!')
+    } else {
+      console.log('Not Authenticated!')
+    }
+  }, [isAuthenticated])
+
 
   return (
     <ModalContext.Provider value={{
@@ -14,15 +29,24 @@ export default function RootWrapper() {
     }}>
       <div>
         <header className={styles.header}>
-          <h1>Hackabud</h1>
+          <h1>HackaBud</h1>
 
           <div className={styles.hackathonPicker}>
             <Button variant="accent">Hackathon Picker</Button>
           </div>
 
-          <div className={styles.userSettings}>
-            User Settings go here
+          <div>
+            <div className={styles.userInfo}>
+              {isAuthenticated
+                ? <img src={user?.picture} alt="Profile" />
+                : ''}
+            </div>
+
+            <div className={styles.userSettings}>
+              {isAuthenticated ? <LogoutButton /> : <LoginButton />}
+            </div>
           </div>
+
         </header>
         <main className={styles.content}>
           <Outlet />
