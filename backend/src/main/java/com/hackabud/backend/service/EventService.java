@@ -1,10 +1,14 @@
 package com.hackabud.backend.service;
 
+import static com.hackabud.backend.mapper.EventMapper.toEntity;
+import static com.hackabud.backend.mapper.EventMapper.toJson;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.hackabud.backend.entity.Event;
 import com.hackabud.backend.repository.EventRepository;
+import com.hackabud.backend.response.EventJson;
 import com.hackabud.backend.service.exception.BadRequestException;
 import com.hackabud.backend.service.exception.NotFoundException;
 
@@ -16,7 +20,7 @@ public class EventService {
         this.repo = repo;
     }
 
-    public Event getEvent(Long id) throws BadRequestException, NotFoundException {
+    public EventJson getEvent(Long id) throws BadRequestException, NotFoundException {
         if (id == null)
             throw new BadRequestException();
         
@@ -24,6 +28,12 @@ public class EventService {
         if (event.isEmpty())
             throw new NotFoundException();
         
-        return event.get();
+        return toJson(event.get());
+    }
+
+    public EventJson addNewEvent(EventJson json) {
+        Event entity = toEntity(json);
+        Event savedEntity = repo.save(entity);
+        return toJson(savedEntity);
     }
 }

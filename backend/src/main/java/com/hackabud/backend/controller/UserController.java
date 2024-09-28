@@ -10,29 +10,27 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.hackabud.backend.response.EventJson;
-import com.hackabud.backend.service.EventService;
+import com.hackabud.backend.response.UserJson;
+import com.hackabud.backend.service.UserService;
 import com.hackabud.backend.service.exception.BadRequestException;
 import com.hackabud.backend.service.exception.NotFoundException;
 
 import jakarta.validation.Valid;
 
-
-
 @RestController
-@RequestMapping("/event")
-public class EventController {
-    private EventService service;
+@RequestMapping("/user")
+public class UserController {
+    private UserService service;
 
-    public EventController(@Autowired EventService service) {
+    public UserController(@Autowired UserService service) {
         this.service = service;
     }
 
     @GetMapping("/{id}")
-    public ResponseEntity<EventJson> getEvent(@PathVariable("id") Long id) {
-        EventJson json;
+    public ResponseEntity<UserJson> getUser(@PathVariable("id") Long id) {
+        UserJson json;
         try {
-            json = service.getEvent(id);
+            json = service.getUser(id);
         } catch (BadRequestException e) {
             return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(null);
         } catch (NotFoundException e) {
@@ -42,8 +40,8 @@ public class EventController {
     }
 
     @PostMapping("/")
-    public ResponseEntity<EventJson> addNewEvent(@RequestBody @Valid EventJson json) {
-        EventJson savedJson = service.addNewEvent(json);
+    public ResponseEntity<UserJson> addNewUser(@RequestBody @Valid UserJson json) {
+        UserJson savedJson = service.addNewUser(json);
         return ResponseEntity.status(HttpStatus.OK).body(savedJson);
     }
     
