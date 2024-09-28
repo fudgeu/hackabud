@@ -1,28 +1,70 @@
-import js from '@eslint/js'
+import stylistic from '@stylistic/eslint-plugin'
+import parserTs from '@typescript-eslint/parser'
+import reactRecommended from 'eslint-plugin-react/configs/recommended.js'
+import reactJsxRuntime from 'eslint-plugin-react/configs/jsx-runtime.js'
+import reactHooks from 'eslint-plugin-react-hooks/cjs/eslint-plugin-react-hooks.development.js'
 import globals from 'globals'
-import reactHooks from 'eslint-plugin-react-hooks'
-import reactRefresh from 'eslint-plugin-react-refresh'
-import tseslint from 'typescript-eslint'
 
-export default tseslint.config(
-  { ignores: ['dist'] },
+export default [
+  /* Browser environment */
   {
-    extends: [js.configs.recommended, ...tseslint.configs.recommended],
-    files: ['**/*.{ts,tsx}'],
     languageOptions: {
-      ecmaVersion: 2020,
-      globals: globals.browser,
+      globals: {
+        ...globals.browser,
+      },
     },
-    plugins: {
-      'react-hooks': reactHooks,
-      'react-refresh': reactRefresh,
+  },
+
+  /* Default flat configs */
+  {
+    ...reactRecommended,
+    ...reactJsxRuntime,
+    // ...js.configs.recommended,
+  },
+
+  /* React hooks config */
+  {
+    plugins: { 'react-hooks': reactHooks }, // react hooks' config are not yet flat config ready
+    rules: reactHooks.configs.recommended.rules,
+  },
+
+  /* Stylistic flat config factory */
+  {
+    ...stylistic.configs.customize({
+      semi: false,
+      quotes: 'single',
+      arrowParens: true,
+      braceStyle: '1tbs',
+    }),
+    languageOptions: {
+      parser: parserTs,
     },
+    files: ['**/*.js', '**/*.ts', '**/*.jsx', '**/*.tsx'],
+  },
+
+  /* Stylistic overrides */
+  {
+    plugins: { '@stylistic': stylistic },
+    languageOptions: {
+      parser: parserTs,
+    },
+    files: ['**/*.js', '**/*.ts', '**/*.jsx', '**/*.tsx'],
     rules: {
-      ...reactHooks.configs.recommended.rules,
-      'react-refresh/only-export-components': [
-        'warn',
-        { allowConstantExport: true },
+      '@stylistic/jsx-closing-bracket-location': 'off', // makes writing with clsx cleaner
+      '@stylistic/member-delimiter-style': [
+        'error',
+        {
+          multiline: {
+            delimiter: 'comma',
+            requireLast: true,
+          },
+          singleline: {
+            delimiter: 'comma',
+            requireLast: false,
+          },
+          multilineDetection: 'brackets',
+        },
       ],
     },
   },
-)
+]
