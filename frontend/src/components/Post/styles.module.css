@@ -6,7 +6,6 @@
     max-width: 40rem;
     min-width: 30rem;
     width: max-content;
-    height: 15rem;
     flex-grow: 1;
     padding: 1rem;
     transition: transform 250ms;
@@ -17,3 +16,18 @@
     }
 }
 
+.hoverButtonsBackground {
+    position: absolute;
+    bottom: 0;
+    right: 0;
+    padding: 1rem;
+    background: radial-gradient(ellipse at bottom right, white, transparent 75%);
+    animation: hoverButtonsIntro 250ms;
+}
+
+@keyframes hoverButtonsIntro {
+    0% {
+        opacity: 0;
+        transform: translateY(1rem);
+    }
+}

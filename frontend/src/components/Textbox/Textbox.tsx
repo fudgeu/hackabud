@@ -1,18 +1,20 @@
 import styles from './styles.module.css'
-import { HTMLProps, ReactNode } from 'react'
+import { ChangeEvent, DetailedHTMLProps, InputHTMLAttributes, ReactNode } from 'react'
 import clsx from 'clsx'
 
 interface TextboxProps {
+  fill?: boolean,
   size?: 'small' | 'medium',
+  onChange?: (e: ChangeEvent<HTMLInputElement>) => void,
   children?: ReactNode | ReactNode[],
 }
 
-type CombinedTextboxProps = TextboxProps & HTMLProps<HTMLButtonElement>
+type CombinedTextboxProps = TextboxProps & DetailedHTMLProps<InputHTMLAttributes<HTMLInputElement>, HTMLInputElement>
 
 export default function Textbox({
   fill = false,
-  variant = 'plain',
   size = 'medium',
+  onChange = () => {},
   children,
   ...rest
 }: CombinedTextboxProps) {
@@ -20,13 +22,12 @@ export default function Textbox({
     <input
       type="text"
       className={clsx({
-        [styles.button]: true,
+        [styles.textbox]: true,
         [styles.small]: size === 'small',
         [styles.medium]: size === 'medium',
-        [styles.plain]: variant === 'plain',
-        [styles.outlined]: variant === 'outlined',
-        [styles.accent]: variant === 'accent',
+        [styles.fill]: fill,
       })}
+      onChange={(e) => onChange(e)}
       {...rest}
     >
       {children}

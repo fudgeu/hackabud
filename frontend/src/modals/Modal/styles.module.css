@@ -1,7 +1,7 @@
 .modal {
     position: relative;
-    max-width: 40rem;
-    max-height: 30rem;
+    width: 30rem;
+    max-height: 50rem;
     background-color: white;
     border: solid 0.05rem var(--border-color);
     box-shadow: 0 0 0.25rem #aaaaaa;

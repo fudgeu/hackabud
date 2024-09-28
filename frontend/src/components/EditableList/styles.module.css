@@ -1,0 +1,13 @@
+.list {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+    padding: 0.5rem 0rem;
+    max-height: 10rem;
+    overflow-y: auto;
+}
+
+.listItem {
+    display: flex;
+    gap: 0.5rem;
+}
