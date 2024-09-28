@@ -1,0 +1,42 @@
+.header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 1rem;
+}
+
+.headerLeft {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+}
+
+.headerRight {
+
+}
+
+.profileIcons {
+
+}
+
+.headerText {
+    display: flex;
+    flex-direction: column;
+
+    & h3 {
+        /* Name */
+        font-size: 1rem;
+        color: var(--gray-text);
+    }
+
+    & h4 {
+        /* Subject */
+        font-size: 1.5rem;
+    }
+}
+
+.tidbits {
+    display: flex;
+    gap: 0.5rem;
+    align-items: center;
+}

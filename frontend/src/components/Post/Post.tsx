@@ -4,12 +4,15 @@ import { Group, OpenInFull } from '@mui/icons-material'
 import Button from '../Button/Button.tsx'
 import { ReactNode, useContext } from 'react'
 import { ModalContext } from '../../contexts.ts'
+import PostInfo from '../PostInfo/PostInfo.tsx';
 
 interface PostProps {
   modal: ReactNode,
+  tidbits: ReactNode | ReactNode[],
+  children: ReactNode | ReactNode[],
 }
 
-export default function Post({ modal }: PostProps) {
+export default function Post({ tidbits, modal, children }: PostProps) {
   const modalHandler = useContext(ModalContext)
 
   const onExpand = () => {
@@ -19,30 +22,12 @@ export default function Post({ modal }: PostProps) {
   return (
     <div className={styles.container}>
       {/* Header */}
-      <div className={styles.header}>
-        {/* Left side */}
-        <div className={styles.headerLeft}>
-          <div className={styles.profileIcons}>
-            [icon]
-          </div>
+      <PostInfo
+        tidbits={tidbits}
+        buttons={<Button square startDecorator={<OpenInFull />} onClick={onExpand} />}
+      />
 
-          <div className={styles.headerText}>
-            <h3>Some dude</h3>
-            <h4>Looking for 2 more!</h4>
-            <div className={styles.tidbits}>
-              <Tidbit icon={<Group />}>1/4 members</Tidbit>
-            </div>
-          </div>
-        </div>
-
-        {/* Right side */}
-        <div className={styles.headerRight}>
-          <Button
-            startDecorator={<OpenInFull />}
-            onClick={onExpand}
-          />
-        </div>
-      </div>
+      {children}
     </div>
   )
 }
