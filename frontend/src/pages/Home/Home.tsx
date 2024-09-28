@@ -1,6 +1,7 @@
 import styles from './styles.module.css'
 import Post from '../../components/Post/Post.tsx'
 import Button from '../../components/Button/Button.tsx'
+import Modal from "../../modals/Modal/Modal.tsx";
 
 export default function Home() {
   return (
@@ -16,7 +17,7 @@ export default function Home() {
       </div>
 
       <div className={styles.grid}>
-        <Post />
+        <Post modal={<Modal>text</Modal>} />
         <Post />
         <Post />
         <Post />

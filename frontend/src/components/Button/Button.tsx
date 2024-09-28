@@ -6,6 +6,8 @@ interface ButtonsProps {
   fill?: boolean,
   variant?: 'plain' | 'outlined' | 'accent',
   size?: 'small' | 'medium',
+  startDecorator: ReactNode | undefined,
+  square?: boolean,
   children?: ReactNode | ReactNode[],
 }
 
@@ -15,6 +17,7 @@ export default function Button({
   fill = false,
   variant = 'plain',
   size = 'medium',
+  startDecorator,
   children,
   ...rest
 }: CombinedButtonProps) {
@@ -32,6 +35,7 @@ export default function Button({
       })}
       {...rest}
     >
+      {startDecorator}
       {children}
     </button>
   )
