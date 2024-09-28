@@ -7,9 +7,6 @@ spring:
     # secret-key: '${SPRING_ENCRYPTION_KEY:}'
     # cors-origins: ${SPRING_CORS_ORIGINS:http://localhost:80,http://localhost:8080,https://localhost:443}
   datasource:
-    url: 'jdbc:mysql://${MYSQL_ADDRESS:localhost}:${MYSQL_PORT:3306}/${MYSQL_DATABASE:hackabud}?useSSL=false&allowPublicKeyRetrieval=true'
-    username: '${MYSQL_USERNAME:root}'
-    password: '${MYSQL_PASSWORD:root}'
     driver-class-name: com.mysql.cj.jdbc.Driver
   jpa:
     hibernate:
