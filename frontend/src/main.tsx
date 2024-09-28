@@ -4,9 +4,9 @@ import './globals.css'
 import { createBrowserRouter, RouterProvider } from 'react-router-dom'
 import RootWrapper from './wrappers/RootWrapper/RootWrapper.tsx'
 import Home from './pages/Home/Home.tsx'
+import { Auth0Provider } from '@auth0/auth0-react';
 import Login from './pages/Login/Login.tsx'
 import Register from './pages/Register/Register.tsx'
-import {Auth0Provider} from "@auth0/auth0-react";
 
 const router = createBrowserRouter([
   {
