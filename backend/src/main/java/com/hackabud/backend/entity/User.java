@@ -21,9 +21,56 @@ public class User {
     @NotBlank
     private String profilePictureUrl;
 
-    @NotBlank // maybe this shouldn't be a parameter, let's discuss
+    @NotBlank
+    private String experienceLevel;
+
     private String school;
 
-    @NotBlank //??? maybe split into separate file if multiple experience levels are possible per user
-    private String experienceLevel;
+    public Long getId() {
+        return id;
+    }
+
+    public void setId(Long id) {
+        this.id = id;
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    public String getUsername() {
+        return username;
+    }
+
+    public void setUsername(String username) {
+        this.username = username;
+    }
+
+    public String getProfilePictureUrl() {
+        return profilePictureUrl;
+    }
+
+    public void setProfilePictureUrl(String profilePictureUrl) {
+        this.profilePictureUrl = profilePictureUrl;
+    }
+
+    public String getExperienceLevel() {
+        return experienceLevel;
+    }
+
+    public void setExperienceLevel(String experienceLevel) {
+        this.experienceLevel = experienceLevel;
+    }
+
+    public String getSchool() {
+        return school;
+    }
+
+    public void setSchool(String school) {
+        this.school = school;
+    }
 }
