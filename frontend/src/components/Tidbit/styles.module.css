@@ -1,0 +1,14 @@
+.tidbit {
+    display: flex;
+    gap: 0rem;
+    align-items: center;
+    border: solid 0.05rem var(--border-color);
+    border-radius: 100rem;
+    padding: 0.15rem 0.5rem;
+    font-size: 0.75rem;
+    color: var(--gray-text);
+
+    & svg {
+        height: 1rem;
+    }
+}

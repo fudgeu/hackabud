@@ -1,0 +1,42 @@
+.container {
+    border: solid 0.05rem var(--border-color);
+    border-radius: 1rem;
+    max-width: 40rem;
+    min-width: 30rem;
+    width: max-content;
+    height: 15rem;
+    flex-grow: 1;
+    padding: 1rem;
+}
+
+.header {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+}
+
+.profileIcons {
+
+}
+
+.headerText {
+    display: flex;
+    flex-direction: column;
+
+    & h3 {
+        /* Name */
+        font-size: 1rem;
+        color: var(--gray-text);
+    }
+
+    & h4 {
+        /* Subject */
+        font-size: 1.5rem;
+    }
+}
+
+.tidbits {
+    display: flex;
+    gap: 1rem;
+    align-items: center;
+}
