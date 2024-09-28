@@ -7,7 +7,7 @@ import org.springframework.web.bind.annotation.RestController;
 import com.hackabud.backend.service.JwtAuthService;
 
 @RestController
-@RequestMapping("/api/auth")
+@RequestMapping("/api/nosec")
 public class JwtAuthController {
 
     private final JwtAuthService service;
@@ -17,7 +17,7 @@ public class JwtAuthController {
     }
 
     @PostMapping("/test")
-	public void register() {
+	public void test() {
 		this.service.test();
 	}
     
