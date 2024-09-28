@@ -14,7 +14,7 @@ import org.springframework.security.web.util.matcher.RegexRequestMatcher;
 @EnableWebSecurity
 public class SecurityConfig {
 
-	private static final RegexRequestMatcher SECURITY_PATTERN = new RegexRequestMatcher("^(?!.*sec).*$", null, true);
+	private static final RegexRequestMatcher SECURITY_PATTERN = new RegexRequestMatcher("^(?!.*\\/sec\\/).*$", null, true);
 
     @Bean
 	SecurityFilterChain securityFilterChain(HttpSecurity http) throws Exception {
@@ -22,7 +22,7 @@ public class SecurityConfig {
 			.csrf(AbstractHttpConfigurer::disable)
 			.cors(c -> c.configure(http))
 			.authorizeHttpRequests(r -> r
-				.requestMatchers("/**")
+				.requestMatchers(SECURITY_PATTERN)
 				.permitAll()
 				.anyRequest()
 				.authenticated());
