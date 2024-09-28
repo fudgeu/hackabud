@@ -4,8 +4,6 @@ spring:
       'file:./secrets.yml'
   application:
     name: backend
-    # secret-key: '${SPRING_ENCRYPTION_KEY:}'
-    # cors-origins: ${SPRING_CORS_ORIGINS:http://localhost:80,http://localhost:8080,https://localhost:443}
   datasource:
     driver-class-name: com.mysql.cj.jdbc.Driver
   jpa:
