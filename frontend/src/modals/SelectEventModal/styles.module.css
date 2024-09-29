@@ -1,0 +1,15 @@
+.buttons {
+    display: flex;
+    justify-content: end;
+}
+
+.container {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+}
+
+.header {
+    display: flex;
+    flex-direction: column;
+}
