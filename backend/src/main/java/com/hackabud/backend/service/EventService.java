@@ -17,12 +17,9 @@ import com.hackabud.backend.service.exception.NotFoundException;
 @Service
 public class EventService {
     private EventRepository eventRepo;
-    private EventTeamRepository teamRepo;
 
-    public EventService(@Autowired EventRepository eventRepo,
-                        @Autowired EventTeamRepository teamRepo) {
+    public EventService(@Autowired EventRepository eventRepo) {
         this.eventRepo = eventRepo;
-        this.teamRepo = teamRepo;
     }
 
     public EventJson getEvent(Long id) throws BadRequestException, NotFoundException {

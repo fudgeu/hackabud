@@ -14,11 +14,8 @@ import com.hackabud.backend.response.EventTeamJson;
 @Service
 public class TeamService {
     private EventTeamRepository eventTeamRepo;
-    private TeamMemberRepository memberRepo;
-    public TeamService(@Autowired EventTeamRepository eventTeamRepo,
-                       @Autowired TeamMemberRepository memberRepo) {
+    public TeamService(@Autowired EventTeamRepository eventTeamRepo) {
         this.eventTeamRepo = eventTeamRepo;
-        this.memberRepo = memberRepo;
     }
 
     public List<EventTeamJson> findAllTeamsByEventId(Long eventId) {
