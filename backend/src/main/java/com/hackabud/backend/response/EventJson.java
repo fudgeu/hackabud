@@ -1,13 +1,29 @@
 package com.hackabud.backend.response;
 
+import jakarta.validation.constraints.NotBlank;
+import jakarta.validation.constraints.NotNull;
+
 public class EventJson {
     private Long id;
+    
+    @NotNull
     private Long organizerId;
+
+    @NotBlank
     private String name;
+
+    @NotBlank
     private String description;
+
+    @NotBlank
     private String image;
+
+    @NotBlank
     private String location;
+
+    @NotNull
     private Integer teamSize;
+
 
     public Long getId() {
         return id;

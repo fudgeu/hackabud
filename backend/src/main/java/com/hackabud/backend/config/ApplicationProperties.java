@@ -5,7 +5,7 @@ import java.util.List;
 import org.springframework.boot.context.properties.ConfigurationProperties;
 
 @ConfigurationProperties(prefix = "hackabud")
-public class ApplicationPropeties {
+public class ApplicationProperties {
 
     private List<String> corsOrigins;
 

@@ -1,11 +1,21 @@
 package com.hackabud.backend.response;
 
+import jakarta.validation.constraints.NotBlank;
+
 public class UserJson {
     private Long id;
+
+    @NotBlank
     private String name;
+
+    @NotBlank
     private String username;
+    
     private String profilePictureUrl;
+
+    @NotBlank
     private String experienceLevel;
+    
     private String school;
 
     public Long getId() {

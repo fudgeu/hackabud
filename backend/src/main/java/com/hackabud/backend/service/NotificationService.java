@@ -70,5 +70,9 @@ public class NotificationService {
     public void deleteNotifications(Long... ids) throws BadRequestException {
         this.deleteNotifications(Arrays.asList(ids));
     }
+
+    public void deleteNotification(Long id) {
+        notificationRepo.deleteById(id);
+    }
     
 }

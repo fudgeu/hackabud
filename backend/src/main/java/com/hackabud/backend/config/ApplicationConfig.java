@@ -9,12 +9,12 @@ import org.springframework.web.filter.CorsFilter;
 import java.util.List;
 
 @Configuration
-public class ApplicataionConfig {
+public class ApplicationConfig {
 
-    private final ApplicationPropeties applicationPropeties;
+    private final ApplicationProperties applicationProperties;
 
-    public ApplicataionConfig(ApplicationPropeties applicationProperties) {
-        this.applicationPropeties = applicationProperties;
+    public ApplicationConfig(ApplicationProperties applicationProperties) {
+        this.applicationProperties = applicationProperties;
     }
 
     @Bean
@@ -25,7 +25,7 @@ public class ApplicataionConfig {
 		config.setAllowedOrigins(List.of("*"));
 		config.addAllowedHeader("*");
 		config.addAllowedMethod("*");
-		source.registerCorsConfiguration("/**", config);
+		source.registerCorsConfiguration("/*", config);
 		return new CorsFilter(source);
 	}
     

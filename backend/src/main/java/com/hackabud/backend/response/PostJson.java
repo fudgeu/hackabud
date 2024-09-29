@@ -1,14 +1,21 @@
 package com.hackabud.backend.response;
 
+import jakarta.validation.constraints.NotNull;
+import jakarta.validation.constraints.Size;
+
 public class PostJson {
     private Long id;
 
+    @NotNull
     private Long eventId;
 
+    @NotNull
     private Long authorId;
 
+    @Size(min=1, max=100)
     private String subject;
 
+    @Size(min=1, max=5000)
     private String body;
 
     public Long getId() {

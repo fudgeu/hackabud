@@ -4,12 +4,11 @@ import jakarta.persistence.Entity;
 import jakarta.persistence.Id;
 
 @Entity
-public class UserSkill {
+public class OAuthUser {
     @Id
     private Long userId;
 
-    // java, c++, spring, godot, etc.
-    private String skill;
+    private String OAuthId;
 
     public Long getUserId() {
         return userId;
@@ -19,11 +18,11 @@ public class UserSkill {
         this.userId = userId;
     }
 
-    public String getSkill() {
-        return skill;
+    public String getOAuthId() {
+        return OAuthId;
     }
 
-    public void setSkill(String skill) {
-        this.skill = skill;
+    public void setOAuthId(String OAuthId) {
+        this.OAuthId = OAuthId;
     }
 }

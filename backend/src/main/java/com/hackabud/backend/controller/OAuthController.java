@@ -8,25 +8,24 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.hackabud.backend.response.PostJson;
-import com.hackabud.backend.service.PostService;
+import com.hackabud.backend.request.OAuthIdJson;
+import com.hackabud.backend.service.OAuthService;
 
 import jakarta.validation.Valid;
 
 
 @RestController
-@RequestMapping("/api/sec/post")
-public class PostController {
-    private PostService service;
+@RequestMapping("/api/oauth")
+public class OAuthController {
+    private OAuthService service;
 
-    public PostController(@Autowired PostService service) {
+    public OAuthController(@Autowired OAuthService service) {
         this.service = service;
     }
 
     @PostMapping("")
-    public ResponseEntity<PostJson> addNewPost(@RequestBody @Valid PostJson json) {
-        PostJson savedJson = service.addNewPost(json);
-        return ResponseEntity.status(HttpStatus.OK).body(savedJson);
+    public ResponseEntity<Boolean> userRegistered(@RequestBody @Valid OAuthIdJson json) {
+        return ResponseEntity.status(HttpStatus.OK).body(service.OAuthIdIsRegistered(json.getOAuthId()));
     }
     
 }
