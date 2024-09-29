@@ -3,8 +3,8 @@ import { ReactNode, useContext } from 'react'
 import Modal from '../Modal/Modal.tsx'
 import { Group, Person } from '@mui/icons-material'
 import { ModalContext } from '../../contexts.ts'
-import CreateIndividualPostModal from '../CreateIndividualPostModal/CreateIndividualPostModal.tsx'
-import CreateTeamPostModal from '../CreateTeamPostModal/CreateTeamPostModal.tsx'
+import CreateIndividualPostModal from '../CreatePostModals/CreateIndividualPostModal.tsx'
+import CreateTeamPostModal from '../CreatePostModals/CreateTeamPostModal.tsx'
 
 interface OptionProps {
   icon: ReactNode,
@@ -29,7 +29,7 @@ function Option({ icon, title, description, onClick }: OptionProps) {
   )
 }
 
-export default function CreatePostModal() {
+export default function CreatePostChooserModal() {
   const modalHandler = useContext(ModalContext)
 
   return (

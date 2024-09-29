@@ -5,13 +5,13 @@ import IndividualPostModal from '../../modals/IndividualPostModal/IndividualPost
 import IndividualPost from '../../components/IndividualPost/IndividualPost.tsx'
 import { useContext } from 'react'
 import { ModalContext } from '../../contexts.ts'
-import CreatePostModal from '../../modals/CreatePostModal/CreatePostModal.tsx'
+import CreatePostChooserModal from '../../modals/CreatePostChooserModal/CreatePostChooserModal.tsx'
 
 export default function Home() {
   const modalHandler = useContext(ModalContext)
 
   const openCreatePostModal = () => {
-    modalHandler.setModal(<CreatePostModal />)
+    modalHandler.setModal(<CreatePostChooserModal />)
   }
 
   return (
