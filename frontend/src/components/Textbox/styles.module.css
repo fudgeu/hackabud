@@ -3,7 +3,6 @@
     display: flex;
     gap: 0.5rem;
     transition: background-color 80ms;
-    background-color: transparent;
     border: solid 0.05rem var(--border-color);
     transition: border-color 80ms;
 
@@ -25,4 +24,14 @@
 
 .fill {
     width: 100%;
+}
+
+.whiteTextbox
+{
+    background-color: rgba(254, 254, 254, 0.832);
+}
+
+.transTextbox
+{
+    background-color: transparent;
 }

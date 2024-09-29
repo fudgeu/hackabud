@@ -4,6 +4,7 @@ import clsx from 'clsx'
 
 interface TextboxProps {
   type?: string,
+  variant?: 'transparent' | 'white',
   fill?: boolean,
   size?: 'small' | 'medium',
   onChange?: (e: ChangeEvent<HTMLInputElement>) => void,
@@ -14,6 +15,7 @@ type CombinedTextboxProps = TextboxProps & DetailedHTMLProps<InputHTMLAttributes
 
 export default function Textbox({
   type = 'text',
+  variant = 'transparent',
   fill = false,
   size = 'medium',
   onChange = () => {},
@@ -28,6 +30,8 @@ export default function Textbox({
         [styles.small]: size === 'small',
         [styles.medium]: size === 'medium',
         [styles.fill]: fill,
+        [styles.whiteTextbox]: variant === 'white',
+        [styles.transTextbox]: variant === 'transparent',
       })}
       onChange={(e) => onChange(e)}
       {...rest}

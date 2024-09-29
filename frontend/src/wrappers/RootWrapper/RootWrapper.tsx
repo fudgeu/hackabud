@@ -70,6 +70,14 @@ export default function RootWrapper() {
                 )
               : ''}
             {isAuthenticated ? <UserProfile /> : <LoginButton />}
+            {!isAuthenticated && (
+              <Button
+                variant="login"
+                onClick={() => handleLogin()}
+              >
+                Sign Up
+              </Button>
+            )}
           </div>
 
         </header>

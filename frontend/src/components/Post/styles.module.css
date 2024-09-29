@@ -1,9 +1,13 @@
 .container {
     display: flex;
     flex-direction: column;
-    border: solid 0.05rem var(--border-color);
+    /*border: solid 0.001rem var(--border-color);*/
     border-radius: 1rem;
+    box-shadow: 4px 4px 20px #727272,
+    -6px -6px 20px #ffffff;
     width: 100%;
+    background-color: #ffffff85;
+    backdrop-filter: blur(20px);
     padding: 1rem;
     transition: transform 250ms;
     gap: 1rem;
@@ -17,6 +21,7 @@
     position: absolute;
     bottom: 0;
     right: 0;
+    border-radius: 1rem;
     padding: 1rem;
     background: radial-gradient(ellipse at bottom right, white, transparent 75%);
     animation: hoverButtonsIntro 250ms;
@@ -25,6 +30,6 @@
 @keyframes hoverButtonsIntro {
     0% {
         opacity: 0;
-        transform: translateY(1rem);
+        transform: translateY(0rem);
     }
 }
