@@ -7,8 +7,11 @@
 .content {
     display: flex;
     flex-direction: column;
-    width: 30rem;
+    width: 100%;
+    gap: 1rem;
 }
+
+.z {display: flex; flex-direction: column}
 
 .sectionText {
     font-weight: bold;

@@ -32,12 +32,16 @@ export default function TeamPostModal({ name, subject, members, maxMembers, desc
         />
 
         <div className={styles.content}>
-          <p className={styles.sectionText}>Description</p>
-          <p>{description}</p>
+          <div className={styles.z}>
+            <p className={styles.sectionText}>Description</p>
+            <p>{description}</p>
+          </div>
 
-          <p className={styles.sectionText}>Members</p>
-          <div className={styles.membersGrid}>
-            {members}
+          <div className={styles.z}>
+            <p className={styles.sectionText}>Members</p>
+            <div className={styles.membersGrid}>
+              {members}
+            </div>
           </div>
         </div>
       </div>

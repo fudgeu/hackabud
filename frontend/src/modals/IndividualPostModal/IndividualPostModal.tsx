@@ -31,12 +31,14 @@ export default function IndividualPostModal({ name, subject, members, maxMembers
         />
 
         <div className={styles.content}>
-          <p className={styles.sectionText}>Description</p>
-          <p>{description}</p>
+          <div className={styles.z}>
+            <p className={styles.sectionText}>Description</p>
+            <p>{description}</p>
+          </div>
         </div>
 
         <div className={styles.buttons}>
-          <Button startDecorator={<HeartBroken />} variant="accent">Invite!</Button>
+          <Button startDecorator={<HeartBroken/>} variant="accent">Invite!</Button>
         </div>
       </div>
     </Modal>

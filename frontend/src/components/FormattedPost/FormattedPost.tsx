@@ -53,7 +53,7 @@ export default function FormattedPost({ post }: IndividualPostProps) {
       name={name}
       subject={subject}
       modal={
-        members === 1
+        members <= 1
           ? <IndividualPostModal name={name} subject={subject} description={description} school={school} skillLevel={skillLevel} members={1} maxMembers={session.eventMaxMembers} />
           : <TeamPostModal name={name} subject={subject} description={description} school={school} skillLevel={skillLevel} members={1} maxMembers={session.eventMaxMembers} />
       }
