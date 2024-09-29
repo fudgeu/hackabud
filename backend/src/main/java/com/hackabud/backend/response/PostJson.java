@@ -1,10 +1,14 @@
 package com.hackabud.backend.response;
 
 import jakarta.validation.constraints.NotNull;
+import jakarta.validation.constraints.Pattern;
 import jakarta.validation.constraints.Size;
 
 public class PostJson {
     private Long id;
+
+    @Pattern(regexp="TEAM|USER")
+    private String authorType;
 
     @NotNull
     private Long eventId;

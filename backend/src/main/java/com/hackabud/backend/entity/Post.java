@@ -13,11 +13,21 @@ public class Post {
 
     private Long eventId;
 
+    private String authorType;
+
     private Long authorId;
 
     private String subject;
 
     private String body;
+
+    public String getAuthorType() {
+        return authorType;
+    }
+
+    public void setAuthorType(String authorType) {
+        this.authorType = authorType;
+    }
 
     public Long getId() {
         return id;
