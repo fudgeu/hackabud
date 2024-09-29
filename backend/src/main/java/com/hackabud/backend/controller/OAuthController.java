@@ -9,6 +9,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.hackabud.backend.request.OAuthIdJson;
+import com.hackabud.backend.response.OAuthUserJson;
 import com.hackabud.backend.service.OAuthService;
 
 import jakarta.validation.Valid;
@@ -27,5 +28,11 @@ public class OAuthController {
     public ResponseEntity<Boolean> userRegistered(@RequestBody @Valid OAuthIdJson json) {
         return ResponseEntity.status(HttpStatus.OK).body(service.OAuthIdIsRegistered(json.getOAuthId()));
     }
+
+    @PostMapping("/new")
+    public ResponseEntity<OAuthUserJson> createNewUserBinding(@RequestBody OAuthUserJson json) {
+        return ResponseEntity.ok(service.addNewUserBinding(json));
+    }
+    
     
 }
