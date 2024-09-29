@@ -6,7 +6,7 @@ import org.springframework.web.bind.annotation.RestController;
 import com.hackabud.backend.service.InviteService;
 
 @RestController
-@RequestMapping("/api/sec/invite")
+@RequestMapping("/invite")
 public class InviteController {
     private InviteService service;
 
