@@ -1,10 +1,11 @@
 import styles from './styles.module.css'
 import Field from '../../components/Field/Field.tsx'
-import { FormEvent, useState } from 'react'
+import { FormEvent, useContext, useState } from 'react'
 import Button from '../../components/Button/Button.tsx'
 import ListField from '../../components/ListField/ListField.tsx'
 import { useNavigate } from 'react-router-dom'
 import { URL } from '../../util.ts'
+import { SessionContext } from '../../contexts.ts'
 
 export default function Register() {
   const [name, setName] = useState('')
@@ -15,6 +16,7 @@ export default function Register() {
   const [websites, setWebsites] = useState<string[]>([])
 
   const navigate = useNavigate()
+  const session = useContext(SessionContext)
 
   const handleSubmit = (e: FormEvent) => {
     e.preventDefault()
@@ -30,14 +32,24 @@ export default function Register() {
         school: school,
       }),
     })
-      .then(() => {
-        navigate('/home')
-      })
+      .then((raw) => raw.json().then((res) => {
+        // Link user ID and oauth ID
+        fetch(`${URL}/oauth/new`, {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({
+            userId: res.id,
+            OAuthId: session.oauthId,
+          }),
+        }).then(() => {
+          navigate('/home')
+        })
+      }))
   }
 
   return (
     <div className={styles.reg}>
-      <h2 className={styles.title}>Create an Account</h2>
+      <h2 className={styles.title}>Set Up Account</h2>
       <div className={styles.regContainer}>
         <form className={styles.form} onSubmit={handleSubmit}>
           <Field

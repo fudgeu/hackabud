@@ -29,6 +29,7 @@ export default function RootWrapper() {
   const location = useLocation()
   const isRegistering = location.pathname === '/register'
 
+  const [oauthId, setOauthId] = useState('')
   const isInTeam = false
   const teamId = -1
 
@@ -48,24 +49,23 @@ export default function RootWrapper() {
       console.log('Checking if registration complete...')
       fetch(`${URL}/oauth`, {
         method: 'POST',
-        body: JSON.stringify({ OAuthId: user.sub }),
+        body: user.sub ?? '',
         headers: { 'Content-Type': 'application/json' },
       }).then((raw) => raw.json().then((res) => {
-        console.log(res)
-        if (!res?.id) {
+        if (!res || res.status === 404) {
+          setOauthId(user.sub ?? '')
           navigate('/register')
           return
         }
-        setUserId(res.id)
-      }))
+        setUserId(parseInt(res))
+      })).catch(() => {
+        setOauthId(user.sub ?? '')
+        navigate('/register')
+      })
     } else {
       console.log('Not Authenticated!')
     }
   }, [isAuthenticated, navigate, user?.sub])
-
-  const handleSignUp = () => {
-    navigate('/register')
-  }
 
   // Load event
   useEffect(() => {
@@ -129,6 +129,7 @@ export default function RootWrapper() {
           isInTeam,
           teamId,
           posts,
+          oauthId,
           reload: () => setReloadQueued(true),
           setEventId: (id: number) => setEventId(id),
         }}
@@ -147,7 +148,7 @@ export default function RootWrapper() {
                   {eventName}
                 </Button>
               )}
-              {isAuthenticated && (
+              {(isAuthenticated && !isRegistering) && (
                 <Button
                   variant="plain"
                   square
@@ -168,14 +169,6 @@ export default function RootWrapper() {
                   )
                 : ''}
               {isAuthenticated ? <UserProfile /> : <LoginButton />}
-              {!isAuthenticated && (
-                <Button
-                  variant="login"
-                  onClick={() => handleSignUp()}
-                >
-                  Sign Up
-                </Button>
-              )}
             </div>
 
           </header>

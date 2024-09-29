@@ -9,12 +9,13 @@ import Button from '../Button/Button.tsx'
 import {useContext, useEffect, useState} from 'react'
 import {SessionContext} from "../../contexts.ts";
 import {URL} from "../../util.ts";
+import TeamPostModal from "../../modals/IndividualPostModal/TeamPostModal.tsx";
 
 interface IndividualPostProps {
   post: Post,
 }
 
-export default function IndividualPost({ post }: IndividualPostProps) {
+export default function FormattedPost({ post }: IndividualPostProps) {
   const { user, isLoading, isAuthenticated } = useAuth0()
   const [name, setName] = useState('')
   const [subject, setSubject] = useState('')
@@ -26,7 +27,7 @@ export default function IndividualPost({ post }: IndividualPostProps) {
   const session = useContext(SessionContext)
 
   const handleInvite = () => {
-    fetch(`${URL}/api/sec/invite/`, {
+    fetch(`${URL}/sec/invite/`, {
       method: 'POST',
       body: JSON.stringify({
         fromTeamId: session.teamId,
@@ -51,7 +52,11 @@ export default function IndividualPost({ post }: IndividualPostProps) {
     <Post
       name={name}
       subject={subject}
-      modal={<IndividualPostModal name={name} subject={subject} description={description} school={school} skillLevel={skillLevel} members={1} maxMembers={session.eventMaxMembers} />}
+      modal={
+        members === 1
+          ? <IndividualPostModal name={name} subject={subject} description={description} school={school} skillLevel={skillLevel} members={1} maxMembers={session.eventMaxMembers} />
+          : <TeamPostModal name={name} subject={subject} description={description} school={school} skillLevel={skillLevel} members={1} maxMembers={session.eventMaxMembers} />
+      }
       members={1}
       maxMembers={session.eventMaxMembers}
       tidbits={[

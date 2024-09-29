@@ -20,3 +20,8 @@
     width: 100%;
     justify-content: end;
 }
+
+.membersGrid {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+}
