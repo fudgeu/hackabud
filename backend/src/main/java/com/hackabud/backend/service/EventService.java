@@ -1,16 +1,12 @@
 package com.hackabud.backend.service;
 
-import java.util.List;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-import com.hackabud.backend.mapper.*;
+
 import com.hackabud.backend.entity.Event;
-import com.hackabud.backend.entity.EventTeam;
+import com.hackabud.backend.mapper.EventMapper;
 import com.hackabud.backend.repository.EventRepository;
-import com.hackabud.backend.repository.EventTeamRepository;
 import com.hackabud.backend.response.EventJson;
-import com.hackabud.backend.response.EventTeamJson;
 import com.hackabud.backend.service.exception.BadRequestException;
 import com.hackabud.backend.service.exception.NotFoundException;
 

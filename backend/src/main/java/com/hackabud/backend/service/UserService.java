@@ -50,4 +50,11 @@ public class UserService {
         List<UserSkillJson> jsons = entity.stream().map(UserSkillMapper::toJson).toList();
         return jsons;
     }
+
+    public UserSkillJson addSkill(UserSkillJson json) {
+        UserSkill savedEntity = skillRepo.save(UserSkillMapper.toEntity(json));
+        UserSkillJson savedJson = UserSkillMapper.toJson(savedEntity);
+        return savedJson;
+    }
+
 }

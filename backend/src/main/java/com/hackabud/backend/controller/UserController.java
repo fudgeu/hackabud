@@ -50,5 +50,11 @@ public class UserController {
     public ResponseEntity<List<UserSkillJson>> findAllSkills(@PathVariable("id") Long id) {
         return ResponseEntity.status(HttpStatus.OK).body(service.findAllSkills(id));
     }
+
+    @PostMapping("/{id}/skill")
+    public ResponseEntity<UserSkillJson> addSkill(@RequestBody @Valid UserSkillJson json) {
+        return ResponseEntity.status(HttpStatus.OK).body(service.addSkill(json));
+    }
+    
     
 }
