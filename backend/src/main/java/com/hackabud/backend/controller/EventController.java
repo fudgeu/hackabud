@@ -24,7 +24,6 @@ import com.hackabud.backend.service.exception.BadRequestException;
 import com.hackabud.backend.service.exception.NotFoundException;
 
 import jakarta.validation.Valid;
-import org.springframework.web.bind.annotation.RequestParam;
 
 
 @RestController

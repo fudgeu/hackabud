@@ -4,8 +4,6 @@ import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
-import jakarta.validation.constraints.NotNull;
-import jakarta.validation.constraints.Size;
 
 @Entity
 public class Post {
@@ -13,16 +11,12 @@ public class Post {
     @GeneratedValue(strategy=GenerationType.AUTO)
     private Long id;
 
-    @NotNull
     private Long eventId;
 
-    @NotNull
     private Long authorId;
 
-    @Size(min=1, max=100)
     private String subject;
 
-    @Size(min=1, max=5000)
     private String body;
 
     public Long getId() {

@@ -11,10 +11,10 @@ import java.util.List;
 @Configuration
 public class ApplicationConfig {
 
-    private final ApplicationProperties applicationPropeties;
+    private final ApplicationProperties applicationProperties;
 
     public ApplicationConfig(ApplicationProperties applicationProperties) {
-        this.applicationPropeties = applicationProperties;
+        this.applicationProperties = applicationProperties;
     }
 
     @Bean

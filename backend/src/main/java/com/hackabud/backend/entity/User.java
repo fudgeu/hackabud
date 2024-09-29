@@ -15,17 +15,13 @@ public class User {
     @Id
     @GeneratedValue(strategy=GenerationType.AUTO)
     private Long id;
-
-    @NotBlank
+    
     private String name;
 
-    @NotBlank
     private String username;
 
-    @NotBlank
     private String profilePictureUrl;
 
-    @NotBlank
     private String experienceLevel;
 
     private String school;
