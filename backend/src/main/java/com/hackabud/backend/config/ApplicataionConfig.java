@@ -19,11 +19,10 @@ public class ApplicataionConfig {
 
     @Bean
 	CorsFilter corsFilter() {
-		List<String> origins = this.applicationPropeties.getCorsOrigins();
 		UrlBasedCorsConfigurationSource source = new UrlBasedCorsConfigurationSource();
 		CorsConfiguration config = new CorsConfiguration();
-		config.setAllowCredentials(true);
-		config.setAllowedOrigins(origins != null ? origins : List.of());
+		config.setAllowCredentials(false);
+		config.setAllowedOrigins(List.of("*"));
 		config.addAllowedHeader("*");
 		config.addAllowedMethod("*");
 		source.registerCorsConfiguration("/**", config);
