@@ -1,0 +1,28 @@
+.textbox {
+    all: unset;
+    display: flex;
+    gap: 0.5rem;
+    transition: background-color 80ms;
+    background-color: transparent;
+    border: solid 0.05rem var(--border-color);
+    transition: border-color 80ms;
+
+    &:focus {
+        outline: solid 0.1rem blue;
+        outline-offset: -0.1rem;
+    }
+}
+
+.small {
+    padding: 0.25rem 0.5rem;
+    border-radius: 1rem;
+}
+
+.medium {
+    padding: 0.5rem 1rem;
+    border-radius: 0.5rem;
+}
+
+.fill {
+    width: 100%;
+}

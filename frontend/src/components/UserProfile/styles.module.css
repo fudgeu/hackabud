@@ -1,0 +1,51 @@
+.userInfo
+{
+    position: relative;
+    display: inline-block;
+}
+
+.profileImage
+{
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    cursor: pointer;
+    object-fit: cover;
+    box-shadow: 4px 4px 8px rgba(0, 0, 0, 0.4);
+}
+
+.dropdown 
+{
+    position: absolute;
+    top: 60px;
+    right: 0;
+    background-color: rgba(0, 0, 0, 0.1);
+    backdrop-filter: blur(15px);
+    box-shadow: 4px 4px 8px rgba(0, 0, 0, 0.8);
+    border-radius: 8px;
+    padding: 10px;
+    z-index: 1;
+    width: 160px;
+}
+
+.dropdown ul 
+{
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.dropdown li 
+{
+    display: flex;
+    padding: 10px;
+    cursor: pointer;
+    text-align: center;
+    align-items: center;
+    height: 50px;
+}
+
+.dropdown li:hover 
+{
+    background-color: #f0f0f0
+}
