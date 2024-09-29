@@ -39,7 +39,7 @@ public class UserController {
         return ResponseEntity.status(HttpStatus.OK).body(json);
     }
 
-    @PostMapping("/")
+    @PostMapping("")
     public ResponseEntity<UserJson> addNewUser(@RequestBody @Valid UserJson json) {
         UserJson savedJson = service.addNewUser(json);
         return ResponseEntity.status(HttpStatus.OK).body(savedJson);

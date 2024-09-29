@@ -56,7 +56,7 @@ public class EventController {
         return ResponseEntity.status(HttpStatus.OK).body(json);
     }
 
-    @PostMapping("/")
+    @PostMapping("")
     public ResponseEntity<EventJson> addNewEvent(@RequestBody @Valid EventJson json) {
         EventJson savedJson = eventService.addNewEvent(json);
         return ResponseEntity.status(HttpStatus.OK).body(savedJson);
