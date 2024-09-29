@@ -2,7 +2,6 @@ plugins {
 	id 'java'
 	id 'org.springframework.boot' version '3.3.4'
 	id 'io.spring.dependency-management' version '1.1.6'
-	id "com.github.johnrengelman.shadow" version "8.1.1"
 }
 
 group = 'com.hackabud'
@@ -43,10 +42,4 @@ jar {
 			'Main-Class': 'com.hackabud.backend.BackendApplication'
 		)
 	}
-}
-
-tasks.named('shadowJar', com.github.jengelman.gradle.plugins.shadow.tasks.ShadowJar) {
-   archiveBaseName.set('backend-shadow')
-   archiveClassifier.set('')
-   archiveVersion.set('')
 }

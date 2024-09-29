@@ -55,6 +55,32 @@ export default function Home() {
         <Post />
         <Post />
         <Post />
+        <IndividualPost />
+        <IndividualPost />
+        <IndividualPost />
+        <Post />
+        <Post />
+        <Post />
+        <Post />
+        <Post />
+        <Post />
+        <IndividualPost />
+        <IndividualPost />
+        <Post />
+        <Post />
+        <Post />
+        <Post />
+        <IndividualPost />
+        <Post />
+        <Post />
+        <Post />
+        <IndividualPost />
+        <IndividualPost />
+        <Post />
+        <Post />
+        <IndividualPost />
+        <Post />
+        <IndividualPost />
       </div>
     </div>
   )

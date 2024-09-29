@@ -1,0 +1,15 @@
+.notification {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+    padding: 1rem;
+
+    & + & {
+        border-top: solid 0.05rem var(--border-color);
+    }
+}
+
+.buttons {
+    display: flex;
+    justify-content: end;
+}

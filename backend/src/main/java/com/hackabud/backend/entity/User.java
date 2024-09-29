@@ -30,9 +30,6 @@ public class User {
 
     private String school;
 
-    @OneToMany(mappedBy = "user", cascade = CascadeType.ALL, orphanRemoval = true)
-    private List<Notification> notifications;
-
     public Long getId() {
         return id;
     }
@@ -79,14 +76,6 @@ public class User {
 
     public void setSchool(String school) {
         this.school = school;
-    }
-
-    public List<Notification> geNotifications() {
-        return this.notifications;
-    }
-
-    public void setNotifications(List<Notification> notifications) {
-        this.notifications = notifications;
     }
 
 }

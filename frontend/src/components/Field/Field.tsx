@@ -4,6 +4,7 @@ import Textbox from '../Textbox/Textbox.tsx'
 
 interface FieldProps {
   type?: string,
+  variant?: 'white' | 'transparent',
   label: string,
   value: string,
   placeholder?: string,
@@ -11,7 +12,7 @@ interface FieldProps {
   onChange: (newVal: string) => void,
 }
 
-export default function Field({ type, label, value, placeholder, required = false, onChange }: FieldProps) {
+export default function Field({ type, variant = 'transparent', label, value, placeholder, required = false, onChange }: FieldProps) {
   const id = useId()
 
   return (
@@ -20,6 +21,7 @@ export default function Field({ type, label, value, placeholder, required = fals
       <Textbox
         type={type}
         id={id}
+        variant={variant}
         value={value}
         placeholder={placeholder}
         required={required}

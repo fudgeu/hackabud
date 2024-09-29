@@ -1,0 +1,35 @@
+.reg
+{
+    display: grid;
+    justify-content: let;
+}
+
+.title
+{
+    display:   flex;
+    align-content: center;
+    padding: 1rem;
+}
+
+
+.regContainer
+{
+    background-color: rgba(126, 126, 126, 0.415);
+    border-radius: 1rem;
+    min-height: 80vh;
+    width: 60vw;
+    padding: 2rem;
+    
+    background: linear-gradient(
+        to bottom right, 
+        rgba(0, 0, 0, 0.1), 
+        rgba(0, 9, 31, 0.411) 
+    );
+}
+
+.regEntries
+{
+    display: flex;
+    flex-direction: column; /* Stacks elements vertically */
+    gap: 1rem; /* Adds space between child elements */
+}
