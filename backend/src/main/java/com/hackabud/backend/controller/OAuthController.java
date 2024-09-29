@@ -1,5 +1,7 @@
 package com.hackabud.backend.controller;
 
+import java.util.NoSuchElementException;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -25,14 +27,17 @@ public class OAuthController {
     }
 
     @PostMapping("")
-    public ResponseEntity<Boolean> userRegistered(@RequestBody @Valid OAuthIdJson json) {
-        return ResponseEntity.status(HttpStatus.OK).body(service.OAuthIdIsRegistered(json.getOAuthId()));
+    public ResponseEntity<Long> userRegistered(@RequestBody @Valid OAuthIdJson json) {
+        try {
+            return ResponseEntity.status(HttpStatus.OK).body(service.tryGetUserId(json.getOAuthId()).get());
+        } catch (NoSuchElementException e) {
+            return ResponseEntity.status(HttpStatus.NOT_FOUND).body(null);
+        }
     }
 
     @PostMapping("/new")
     public ResponseEntity<OAuthUserJson> createNewUserBinding(@RequestBody OAuthUserJson json) {
         return ResponseEntity.ok(service.addNewUserBinding(json));
     }
-    
-    
+       
 }

@@ -2,7 +2,7 @@ package com.hackabud.backend.service;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-
+import java.util.*;
 import com.hackabud.backend.entity.OAuthUser;
 import com.hackabud.backend.repository.OAuthRepository;
 import com.hackabud.backend.response.OAuthUserJson;
@@ -15,8 +15,8 @@ public class OAuthService {
         this.repo = repo;
     }
 
-    public Boolean OAuthIdIsRegistered(String OAuthId) {
-        return repo.existsByOAuthId(OAuthId);
+    public Optional<Long> tryGetUserId(String OAuthId) {
+        return repo.findUserIdByOAuthId(OAuthId);
     }
 
     public OAuthUserJson addNewUserBinding(OAuthUserJson json) {
