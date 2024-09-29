@@ -1,0 +1,15 @@
+spring:
+  config:
+    import:
+      'file:./secrets.yml'
+  application:
+    name: backend
+  datasource:
+    driver-class-name: com.mysql.cj.jdbc.Driver
+  jpa:
+    hibernate:
+      ddl-auto: update
+    database: mysql
+    database-platform: 'org.hibernate.dialect.MySQLDialect'
+server:
+  port: 8080
