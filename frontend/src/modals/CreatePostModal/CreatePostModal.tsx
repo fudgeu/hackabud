@@ -1,16 +1,21 @@
 import styles from './styles.module.css'
-import { ReactNode } from 'react'
+import { ReactNode, useContext } from 'react'
 import Modal from '../Modal/Modal.tsx'
+import { Group, Person } from '@mui/icons-material'
+import { ModalContext } from '../../contexts.ts'
+import CreateIndividualPostModal from '../CreateIndividualPostModal/CreateIndividualPostModal.tsx'
+import CreateTeamPostModal from '../CreateTeamPostModal/CreateTeamPostModal.tsx'
 
 interface OptionProps {
   icon: ReactNode,
   title: string,
   description: string,
+  onClick: () => void,
 }
 
-function Option({ icon, title, description }: OptionProps) {
+function Option({ icon, title, description, onClick }: OptionProps) {
   return (
-    <button className={styles.option}>
+    <button className={styles.option} onClick={onClick}>
       {icon}
       <div className={styles.optionText}>
         <span className={styles.title}>
@@ -25,22 +30,30 @@ function Option({ icon, title, description }: OptionProps) {
 }
 
 export default function CreatePostModal() {
+  const modalHandler = useContext(ModalContext)
+
   return (
     <Modal>
-      <h2>Create Post</h2>
-      <p>What type of post do you want to make?</p>
+      <div className={styles.container}>
+        <div style={{ display: 'flex', flexDirection: 'column' }}>
+          <h2>Create Post</h2>
+          <p>What type of post do you want to make?</p>
+        </div>
 
-      <Option
-        icon={<p>test</p>}
-        title="I'm an individual"
-        description=""
-      />
+        <Option
+          icon={<Person />}
+          title="I'm an individual"
+          description="I am looking for a team"
+          onClick={() => modalHandler.setModal(<CreateIndividualPostModal />)}
+        />
 
-      <Option
-        icon={<p>test</p>}
-        title="I'm part of a team"
-        description=""
-      />
+        <Option
+          icon={<Group />}
+          title="I'm part of a team"
+          description="We are looking for more members"
+          onClick={() => modalHandler.setModal(<CreateTeamPostModal />)}
+        />
+      </div>
     </Modal>
   )
 }

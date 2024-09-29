@@ -6,15 +6,16 @@ import Button from '../../components/Button/Button.tsx'
 import EditableList from '../../components/EditableList/EditableList.tsx'
 import { Add } from '@mui/icons-material'
 import LabelWithButton from '../../components/LabelWithButton/LabelWithButton.tsx'
+import Field from '../../components/Field/Field.tsx'
+import ListField from '../../components/ListField/ListField.tsx'
 
 export default function CreateIndividualPostModal() {
   const [curStep, setCurStep] = useState(1)
 
-  const subjectId = useId()
-  const schoolId = useId()
-  const skillId = useId()
-  const goalId = useId()
-  const descriptionId = useId()
+  const [subjectVal, setSubjectVal] = useState('')
+  const [schoolVal, setSchoolVal] = useState('')
+  const [skillVal, setSkillVal] = useState('')
+  const [goalVal, setGoalVal] = useState('')
 
   const [websiteList, setWebsiteList] = useState<string[]>([''])
   const [skillsList, setSkillsList] = useState<string[]>([''])
@@ -36,25 +37,10 @@ export default function CreateIndividualPostModal() {
           Your name here
         </div>
 
-        <div className={styles.formField}>
-          <label htmlFor={subjectId}>Subject</label>
-          <Textbox required id={subjectId} placeholder="Looking to make a game!" />
-        </div>
-
-        <div className={styles.formField}>
-          <label htmlFor={schoolId}>School</label>
-          <Textbox id={schoolId} placeholder="College University"/>
-        </div>
-
-        <div className={styles.formField}>
-          <label htmlFor={skillId}>Skill</label>
-          <Textbox required id={skillId} placeholder="Expert" />
-        </div>
-
-        <div className={styles.formField}>
-          <label htmlFor={skillId}>Goal</label>
-          <Textbox required id={goalId} placeholder="To gain experience" />
-        </div>
+        <Field label="Subject" value={subjectVal} placeholder="Looking to make a game!" required onChange={setSubjectVal} />
+        <Field label="School" value={schoolVal} placeholder="College University" onChange={setSchoolVal} />
+        <Field label="Skill" value={skillVal} placeholder="Expert" required onChange={setSkillVal} />
+        <Field label="Goal" value={goalVal} placeholder="To win!" onChange={setGoalVal} />
 
         <div className={styles.buttons}>
           <Button type="submit" variant="accent">Next</Button>
@@ -66,32 +52,9 @@ export default function CreateIndividualPostModal() {
   const renderForm2 = () => {
     return (
       <form className={styles.form} onSubmit={handleSubmitForm2}>
-        <div className={styles.formField}>
-          <LabelWithButton
-            buttonLabel="Add new"
-            buttonIcon={<Add />}
-            onClick={() => setWebsiteList([...websiteList, ''])}
-          >
-            Websites
-          </LabelWithButton>
-          <EditableList values={websiteList} updateValues={setWebsiteList} placeholder="URL" />
-        </div>
-
-        <div className={styles.formField}>
-          <LabelWithButton
-            buttonLabel="Add new"
-            buttonIcon={<Add />}
-            onClick={() => setSkillsList([...skillsList, ''])}
-          >
-            Skills
-          </LabelWithButton>
-          <EditableList values={skillsList} updateValues={setSkillsList} placeholder="Skill" />
-        </div>
-
-        <div className={styles.formField}>
-          <label htmlFor={descriptionId}>More info about yourself</label>
-          <Textbox id={descriptionId} />
-        </div>
+        <ListField label="Websites" values={websiteList} setValues={setWebsiteList} placeholder="URL" />
+        <ListField label="Skills" values={skillsList} setValues={setSkillsList} placeholder="Skill" />
+        <Field label="More info about yourself" value="" onChange={() => {}} />
 
         <div className={styles.buttons}>
           <Button type="button" variant="plain" onClick={() => setCurStep(1)}>Go back</Button>
