@@ -3,6 +3,7 @@ import { Outlet } from 'react-router-dom'
 import Button from '../../components/Button/Button.tsx'
 import { ModalContext } from '../../contexts.ts'
 import { ReactNode, useState } from 'react'
+import { useNavigate } from 'react-router-dom'
 import { useAuth0 } from '@auth0/auth0-react'
 import { useEffect } from 'react'
 
@@ -17,6 +18,7 @@ import Notification from '../../components/Notification/Notification.tsx'
 export default function RootWrapper() {
   const [modalStack, setModalStack] = useState<ReactNode[]>([])
   const [curEventName, setCurEventName] = useState('Shellhacks 2024')
+  const navigate = useNavigate()
 
   const [notifs, setNotifs] = useState<ReactNode[]>([
     <Notification title="You were invited!" description="Team X invited you to join their team." buttonLabel="Join!" onClick={() => {}} />,
@@ -33,6 +35,10 @@ export default function RootWrapper() {
       console.log('Not Authenticated!')
     }
   }, [isAuthenticated])
+
+  const handleSignUp = () => {
+    navigate('/register')
+  }
 
   return (
     <ModalContext.Provider value={{
@@ -73,7 +79,7 @@ export default function RootWrapper() {
             {!isAuthenticated && (
               <Button
                 variant="login"
-                onClick={() => handleLogin()}
+                onClick={() => handleSignUp()}
               >
                 Sign Up
               </Button>
