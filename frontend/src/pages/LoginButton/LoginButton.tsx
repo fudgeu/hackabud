@@ -1,5 +1,7 @@
 import { useAuth0 } from '@auth0/auth0-react'
 import { useNavigate } from 'react-router-dom'
+import styles from './styles.module.css'
+import Button from '../../components/Button/Button.tsx'
 
 const LoginButton = () => {
   const { loginWithRedirect, isAuthenticated } = useAuth0()
@@ -12,13 +14,13 @@ const LoginButton = () => {
 
   if (!isAuthenticated) {
     return (
-      <div className="center-button">
-        <button
-          className="btn btn-primary loginBtn"
+      <div>
+        <Button
+          variant="login"
           onClick={() => handleLogin()}
         >
           Log In
-        </button>
+        </Button>
       </div>
     )
   }

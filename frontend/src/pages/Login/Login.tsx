@@ -18,8 +18,8 @@ export default function Login() {
   }, [isAuthenticated])
 
   return (
-    <div>
-      {isAuthenticated ? 'Authenticated!' : 'Not Authenticated!'}
-    </div>
+    <h1 className={styles.authen}>
+      Authenticating...
+    </h1>
   )
 };

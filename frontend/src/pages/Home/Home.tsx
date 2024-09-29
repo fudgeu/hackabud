@@ -1,5 +1,6 @@
 import styles from './styles.module.css'
 import Post from '../../components/Post/Post.tsx'
+import { useAuth0 } from '@auth0/auth0-react'
 import Button from '../../components/Button/Button.tsx'
 import IndividualPostModal from '../../modals/IndividualPostModal/IndividualPostModal.tsx'
 import IndividualPost from '../../components/IndividualPost/IndividualPost.tsx'
@@ -9,7 +10,7 @@ import CreatePostModal from '../../modals/CreatePostModal/CreatePostModal.tsx'
 
 export default function Home() {
   const modalHandler = useContext(ModalContext)
-
+  const { user, isLoading, isAuthenticated } = useAuth0()
   const openCreatePostModal = () => {
     modalHandler.setModal(<CreatePostModal />)
   }
@@ -18,11 +19,30 @@ export default function Home() {
     <div className={styles.container}>
       <div className={styles.header}>
         <div className={styles.headerLeft}>
-          <h2 className={styles.helloText}>Hello, username here!</h2>
+          {isAuthenticated
+            ? (
+                <h2 className={styles.helloText}>
+                  Hello,
+                  {' '}
+                  {user?.name}
+                  !
+                </h2>
+              )
+            : (
+                <h2 className={styles.helloText}>
+                  Hello!
+                </h2>
+              )}
           <p>Find open teams and individuals below.</p>
         </div>
         <div className={styles.headerRight}>
-          <Button variant="accent" onClick={openCreatePostModal}>Create Post</Button>
+          {isAuthenticated
+            ? (
+                <Button variant="accent" onClick={openCreatePostModal}>Create Post</Button>
+              )
+            : (
+                ''
+              )}
         </div>
       </div>
 

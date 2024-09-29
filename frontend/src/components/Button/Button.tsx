@@ -32,6 +32,7 @@ export default function Button({
         [styles.plain]: variant === 'plain',
         [styles.outlined]: variant === 'outlined',
         [styles.accent]: variant === 'accent',
+        [styles.login]: variant === 'login',
         [styles.square]: square,
         [styles.fill]: fill,
       })}

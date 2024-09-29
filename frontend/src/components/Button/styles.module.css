@@ -60,6 +60,17 @@
     }
 }
 
+.login {
+    background-color: #008080;
+    border-top: solid 0.10rem #ffffff44;
+    border-bottom: solid 0.10rem #00000005;
+    color: white;
+
+    &:hover {
+        background-color: #1bc6c6;
+    }
+}
+
 .fill {
     width: 100%;
 }

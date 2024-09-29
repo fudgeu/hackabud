@@ -8,6 +8,7 @@ import { useEffect } from 'react'
 
 import LoginButton from '../../pages/LoginButton/LoginButton.tsx'
 import LogoutButton from '../../pages/LogoutButton/LogoutButton.tsx'
+import UserProfile from '../../components/UserProfile/UserProfile.tsx'
 
 
 export default function RootWrapper() {
@@ -37,13 +38,7 @@ export default function RootWrapper() {
 
           <div>
             <div className={styles.userInfo}>
-              {isAuthenticated
-                ? <img src={user?.picture} alt="Profile" />
-                : ''}
-            </div>
-
-            <div className={styles.userSettings}>
-              {isAuthenticated ? <LogoutButton /> : <LoginButton />}
+              {isAuthenticated ? <UserProfile /> : <LoginButton />}
             </div>
           </div>
 
