@@ -3,10 +3,7 @@
     flex-direction: column;
     border: solid 0.05rem var(--border-color);
     border-radius: 1rem;
-    max-width: 30rem;
-    min-width: 20rem;
-    width: max-content;
-    flex-grow: 1;
+    width: 100%;
     padding: 1rem;
     transition: transform 250ms;
     gap: 1rem;

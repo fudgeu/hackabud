@@ -5,21 +5,9 @@
     padding: 2rem;
 }
 
-.centerButtons {
+.buttons {
     display: flex;
     gap: 0.5rem;
-}
-
-.userInfo
-{
-    display: flex;
-    padding: 10px;
-    padding-right: 0%;
-    cursor: pointer;
-    text-align: center;
-    align-items: center;
-    height: 50px;
-    background-color: #00000000;
 }
 
 .userInfo img {
@@ -46,4 +34,11 @@
     backdrop-filter: blur(0.25rem);
     justify-content: center;
     align-items: center;
+}
+
+.notificationDropdownContainer {
+    position: absolute;
+    bottom: 0;
+    left: 50%;
+    transform: translate(-50%, 3rem)
 }
