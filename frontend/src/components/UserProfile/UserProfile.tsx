@@ -4,11 +4,9 @@ import styles from './styles.module.css'
 import { useState } from 'react'
 import LogoutButton from '../../pages/LogoutButton/LogoutButton.tsx'
 
-
 const UserProfile = () => {
   const { user, isAuthenticated } = useAuth0()
   const [isDropdownOpen, setDropdownOpen] = useState(false)
-
 
   const toggleDropdown = () => {
     setDropdownOpen(!isDropdownOpen)
@@ -23,8 +21,8 @@ const UserProfile = () => {
                 <img
                   src={user?.picture}
                   alt="Profile"
-                  onClick ={toggleDropdown}
-                  className = {styles.profileImage}
+                  onClick={toggleDropdown}
+                  className={styles.profileImage}
                 />
                 {isDropdownOpen && (
                   <div className={styles.dropdown}>

@@ -3,14 +3,11 @@
     flex-direction: column;
     /*border: solid 0.001rem var(--border-color);*/
     border-radius: 1rem;
-    box-shadow: 4px 4px 20px #727272, 
+    box-shadow: 4px 4px 20px #727272,
     -6px -6px 20px #ffffff;
-    max-width: 30rem;
+    width: 100%;
     background-color: #ffffff85;
     backdrop-filter: blur(20px);
-    min-width: 20rem;
-    width: max-content;
-    flex-grow: 1;
     padding: 1rem;
     transition: transform 250ms;
     gap: 1rem;
