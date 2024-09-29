@@ -1,16 +1,17 @@
 import styles from './styles.module.css'
-import Post from '../../components/Post/Post.tsx'
 import { useAuth0 } from '@auth0/auth0-react'
 import Button from '../../components/Button/Button.tsx'
-import IndividualPostModal from '../../modals/IndividualPostModal/IndividualPostModal.tsx'
 import IndividualPost from '../../components/IndividualPost/IndividualPost.tsx'
 import { useContext } from 'react'
-import { ModalContext } from '../../contexts.ts'
+import { ModalContext, SessionContext } from '../../contexts.ts'
 import CreatePostChooserModal from '../../modals/CreatePostChooserModal/CreatePostChooserModal.tsx'
 
 export default function Home() {
-  const modalHandler = useContext(ModalContext)
   const { user, isLoading, isAuthenticated } = useAuth0()
+
+  const modalHandler = useContext(ModalContext)
+  const session = useContext(SessionContext)
+
   const openCreatePostModal = () => {
     modalHandler.setModal(<CreatePostChooserModal />)
   }
@@ -46,15 +47,17 @@ export default function Home() {
         </div>
       </div>
 
-      <div className={styles.grid}>
-        <Post modal={<IndividualPostModal />} />
-        <IndividualPost />
-        <Post />
-        <Post />
-        <Post />
-        <Post />
-        <Post />
-        <Post />
+      <div className={session.posts.length === 0 ? '' : styles.grid}>
+        {session.posts.map((post) => (
+          <IndividualPost post={post} />
+        ))}
+
+        {session.posts.length === 0 && (
+          <div className={styles.noPosts}>
+            <p style={{ fontWeight: 'bold' }}>There are no posts</p>
+            <p style={{ color: 'var(--gray-text)' }}>Be the first to create one!</p>
+          </div>
+        )}
       </div>
     </div>
   )

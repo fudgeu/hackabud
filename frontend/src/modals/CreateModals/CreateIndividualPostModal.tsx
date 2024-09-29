@@ -1,9 +1,11 @@
 import styles from './styles.module.css'
 import Modal from '../Modal/Modal.tsx'
-import { FormEvent, useState } from 'react'
+import {FormEvent, useContext, useState} from 'react'
 import Button from '../../components/Button/Button.tsx'
 import Field from '../../components/Field/Field.tsx'
 import ListField from '../../components/ListField/ListField.tsx'
+import {ModalContext, SessionContext} from "../../contexts.ts";
+import {URL} from "../../util.ts";
 
 export default function CreateIndividualPostModal() {
   const [curStep, setCurStep] = useState(1)
@@ -17,6 +19,9 @@ export default function CreateIndividualPostModal() {
   const [skillsList, setSkillsList] = useState<string[]>([''])
   const [descriptionVal, setDescriptionVal] = useState('')
 
+  const modalHandler = useContext(ModalContext)
+  const session = useContext(SessionContext)
+
   const handleSubmitForm1 = (e: FormEvent) => {
     e.preventDefault()
     setCurStep(2)
@@ -24,6 +29,21 @@ export default function CreateIndividualPostModal() {
 
   const handleSubmitForm2 = (e: FormEvent) => {
     e.preventDefault()
+
+    // Submit to server
+    fetch(`${URL}/post`, {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({
+        eventId: session.eventId,
+        authorId: -1,
+        subject: subjectVal,
+        body: descriptionVal,
+      }),
+    }).then(() => {
+      session.reload()
+      modalHandler.closeModal()
+    })
   }
 
   const renderForm1 = () => {

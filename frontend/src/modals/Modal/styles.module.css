@@ -2,14 +2,12 @@
     position: relative;
     width: 30rem;
     max-height: 50rem;
-    background-color: rgba(170, 170, 170, 0.045);
-    /*
+    /*background-color: rgba(170, 170, 170, 0.045);*/
     background: linear-gradient(
-        to bottom right, 
-        rgba(245, 249, 255, 0.1), 
-        rgba(50, 59, 81, 0.062) 
+        -7deg,
+        rgba(245, 249, 255, 0.1) 60%,
+        rgba(40, 95, 255, 0.06)
     );
-    */
     backdrop-filter: blur(7px);
     border: solid 0.01rem var(--border-color);
     box-shadow: 0 0 0.25rem #aaaaaa;

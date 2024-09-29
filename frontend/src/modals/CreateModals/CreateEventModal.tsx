@@ -1,10 +1,15 @@
 import styles from './styles.module.css'
 import Modal from '../Modal/Modal.tsx'
-import {FormEvent, useState} from "react";
-import Field from "../../components/Field/Field.tsx";
-import Button from "../../components/Button/Button.tsx";
+import { FormEvent, useState } from 'react'
+import Field from '../../components/Field/Field.tsx'
+import Button from '../../components/Button/Button.tsx'
+import { URL } from '../../util.ts'
 
-export default function CreateEventModal() {
+interface CreateEventModalProps {
+  setSelectedEvent: (id: number) => void,
+}
+
+export default function CreateEventModal({ setSelectedEvent }: CreateEventModalProps) {
   const [eventName, setEventName] = useState('')
   const [location, setLocation] = useState('')
   const [teamSizeLimit, setTeamSizeLimit] = useState('')
@@ -12,6 +17,25 @@ export default function CreateEventModal() {
 
   const handleFormSubmit = (e: FormEvent) => {
     e.preventDefault()
+  }
+
+  const doUpload = () => {
+    fetch(`${URL}/event`, {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({
+        organizerId: -1,
+        name: eventName,
+        description: description,
+        image: '',
+        location: location,
+        teamSize: teamSizeLimit,
+      }),
+    }).then((raw) => {
+      raw.json().then((res) => {
+        setSelectedEvent(res.id)
+      })
+    })
   }
 
   return (
@@ -38,7 +62,7 @@ export default function CreateEventModal() {
           <Field label="Description" value={description} onChange={setDescription} required />
 
           <div className={styles.buttons}>
-            <Button type="submit" variant="accent">Create</Button>
+            <Button type="submit" variant="accent" onClick={doUpload}>Create</Button>
           </div>
         </form>
       </div>

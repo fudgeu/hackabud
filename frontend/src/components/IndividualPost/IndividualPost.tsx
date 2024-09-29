@@ -6,11 +6,27 @@ import { useAuth0 } from '@auth0/auth0-react'
 import { HeartBroken, School, Stars } from '@mui/icons-material'
 import BulletedList from '../BulletedList/BulletedList.tsx'
 import Button from '../Button/Button.tsx'
+import { useEffect, useState } from 'react'
 
-export default function IndividualPost() {
+interface IndividualPostProps {
+  post: Post,
+}
+
+export default function IndividualPost({ post }: IndividualPostProps) {
   const { user, isLoading, isAuthenticated } = useAuth0()
+  const [name, setName] = useState('')
+  const [subject, setSubject] = useState('')
+  const [description, setDescription] = useState('')
+
+  useEffect(() => {
+    setSubject(post.subject)
+    setDescription(post.body)
+  }, [post])
+
   return (
     <Post
+      name={name}
+      subject={subject}
       modal={<IndividualPostModal />}
       tidbits={[
         <Tidbit icon={<School />}>UCF</Tidbit>,

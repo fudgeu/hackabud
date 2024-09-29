@@ -15,7 +15,7 @@
     border: solid 0.05rem var(--border-color);
 
     &:hover {
-        background-color: #f6f6f6;
+        background-color: #00000006;
         cursor: pointer;
     }
 }

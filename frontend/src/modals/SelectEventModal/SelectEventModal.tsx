@@ -1,14 +1,19 @@
 import styles from './styles.module.css'
 import Modal from '../Modal/Modal.tsx'
 import Field from '../../components/Field/Field.tsx'
-import { FormEvent, useState } from 'react'
+import {FormEvent, useContext, useState} from 'react'
 import Button from '../../components/Button/Button.tsx'
+import {ModalContext, SessionContext} from "../../contexts.ts";
 
 export default function SelectEventModal() {
   const [eventCode, setEventCode] = useState('')
+  const session = useContext(SessionContext)
+  const modalHandler = useContext(ModalContext)
 
   const handleFormSubmit = (e: FormEvent) => {
     e.preventDefault()
+    session.setEventId(parseInt(eventCode))
+    modalHandler.closeModal()
   }
 
   return (
