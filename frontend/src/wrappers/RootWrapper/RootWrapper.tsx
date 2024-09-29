@@ -53,9 +53,21 @@ export default function RootWrapper() {
             />
           </div>
 
-          <div>
+          <div className={styles.centerButtons}>
             <div className={styles.userInfo}>
               {isAuthenticated ? <UserProfile /> : <LoginButton />}
+            </div>
+            <div className={styles.userInfo}>
+              {isAuthenticated
+                ? ''
+                : (
+                    <Button
+                      variant="login"
+                      onClick={() => handleLogin()}
+                    >
+                      Sign Up
+                    </Button>
+                  )}
             </div>
           </div>
 
