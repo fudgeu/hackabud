@@ -18,7 +18,7 @@ import com.hackabud.backend.service.exception.NotFoundException;
 import jakarta.validation.Valid;
 
 @RestController
-@RequestMapping("/user")
+@RequestMapping("/sec/user")
 public class UserController {
     private UserService service;
 

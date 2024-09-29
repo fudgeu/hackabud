@@ -21,7 +21,7 @@ import java.util.List;
 
 
 @RestController
-@RequestMapping("/notif")
+@RequestMapping("/sec/notif")
 public class NotificationController {
     private NotificationService notifService;
     
