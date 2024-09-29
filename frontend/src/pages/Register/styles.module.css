@@ -4,6 +4,13 @@
     justify-content: let;
 }
 
+.title
+{
+    display:   flex;
+    align-content: center;
+    padding: 1rem;
+}
+
 
 .regContainer
 {

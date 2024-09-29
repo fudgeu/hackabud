@@ -5,6 +5,7 @@ import Field from '../../components/Field/Field.tsx'
 export default function Register() {
   return (
     <div className={styles.reg}>
+      <h1 className={styles.title}>Create an Account</h1>
       <div className={styles.regContainer}>
         <div className={styles.regEntries}>
           <Field

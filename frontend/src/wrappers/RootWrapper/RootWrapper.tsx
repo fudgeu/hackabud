@@ -12,6 +12,8 @@ import UserProfile from '../../components/UserProfile/UserProfile.tsx'
 import NotificationModal from '../../modals/NotificationModal/NotificationModal.tsx'
 import Notification from '../../components/Notification/Notification.tsx'
 import { URL } from '../../util.ts'
+import { useNavigate } from 'react-router-dom'
+
 
 export default function RootWrapper() {
   const [modalStack, setModalStack] = useState<ReactNode[]>([])
@@ -20,6 +22,8 @@ export default function RootWrapper() {
 
   const [posts, setPosts] = useState<Post[]>([])
   const [reloadQueued, setReloadQueued] = useState(false)
+
+  const navigate = useNavigate()
 
   const [notifs, setNotifs] = useState<ReactNode[]>([
     <Notification title="You were invited!" description="Team X invited you to join their team." buttonLabel="Join!" onClick={() => {}} />,
@@ -36,6 +40,10 @@ export default function RootWrapper() {
       console.log('Not Authenticated!')
     }
   }, [isAuthenticated])
+
+  const handleSignUp = () => {
+    navigate('/register')
+  }
 
   // Load event
   useEffect(() => {
@@ -104,7 +112,7 @@ export default function RootWrapper() {
               {!isAuthenticated && (
                 <Button
                   variant="login"
-                  onClick={() => handleLogin()}
+                  onClick={() => handleSignUp()}
                 >
                   Sign Up
                 </Button>
