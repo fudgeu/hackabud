@@ -24,7 +24,7 @@ public class PostController {
     }
 
     @PostMapping("")
-    public ResponseEntity<PostJson> postMethodName(@RequestBody @Valid PostJson json) {
+    public ResponseEntity<PostJson> addNewPost(@RequestBody @Valid PostJson json) {
         PostJson savedJson = service.addNewPost(json);
         return ResponseEntity.status(HttpStatus.OK).body(savedJson);
     }
