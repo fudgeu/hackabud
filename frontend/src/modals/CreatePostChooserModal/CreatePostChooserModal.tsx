@@ -3,8 +3,8 @@ import { ReactNode, useContext } from 'react'
 import Modal from '../Modal/Modal.tsx'
 import { Group, Person } from '@mui/icons-material'
 import { ModalContext } from '../../contexts.ts'
-import CreateIndividualPostModal from '../CreatePostModals/CreateIndividualPostModal.tsx'
-import CreateTeamPostModal from '../CreatePostModals/CreateTeamPostModal.tsx'
+import CreateIndividualPostModal from '../CreateModals/CreateIndividualPostModal.tsx'
+import CreateTeamPostModal from '../CreateModals/CreateTeamPostModal.tsx'
 
 interface OptionProps {
   icon: ReactNode,

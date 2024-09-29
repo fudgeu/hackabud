@@ -8,8 +8,9 @@ import { useEffect } from 'react'
 
 import LoginButton from '../../pages/LoginButton/LoginButton.tsx'
 import LogoutButton from '../../pages/LogoutButton/LogoutButton.tsx'
-import { Code } from '@mui/icons-material'
+import {Add, Code} from '@mui/icons-material'
 import SelectEventModal from '../../modals/SelectEventModal/SelectEventModal.tsx'
+import CreateEventModal from "../../modals/CreateModals/CreateEventModal.tsx";
 import UserProfile from '../../components/UserProfile/UserProfile.tsx'
 
 
@@ -36,7 +37,7 @@ export default function RootWrapper() {
         <header className={styles.header}>
           <h1>HackaBud</h1>
 
-          <div className={styles.hackathonPicker}>
+          <div className={styles.centerButtons}>
             <Button
               variant="outlined"
               startDecorator={<Code />}
@@ -44,6 +45,12 @@ export default function RootWrapper() {
             >
               {curEventName}
             </Button>
+            <Button
+              variant="plain"
+              square
+              startDecorator={<Add />}
+              onClick={() => setModalStack([...modalStack, <CreateEventModal />])}
+            />
           </div>
 
           <div>

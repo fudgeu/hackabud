@@ -3,6 +3,7 @@ import { ChangeEvent, DetailedHTMLProps, InputHTMLAttributes, ReactNode } from '
 import clsx from 'clsx'
 
 interface TextboxProps {
+  type?: string,
   fill?: boolean,
   size?: 'small' | 'medium',
   onChange?: (e: ChangeEvent<HTMLInputElement>) => void,
@@ -12,6 +13,7 @@ interface TextboxProps {
 type CombinedTextboxProps = TextboxProps & DetailedHTMLProps<InputHTMLAttributes<HTMLInputElement>, HTMLInputElement>
 
 export default function Textbox({
+  type = 'text',
   fill = false,
   size = 'medium',
   onChange = () => {},
@@ -20,7 +22,7 @@ export default function Textbox({
 }: CombinedTextboxProps) {
   return (
     <input
-      type="text"
+      type={type}
       className={clsx({
         [styles.textbox]: true,
         [styles.small]: size === 'small',

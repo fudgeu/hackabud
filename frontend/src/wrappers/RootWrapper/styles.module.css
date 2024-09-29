@@ -5,8 +5,9 @@
     padding: 2rem;
 }
 
-.hackathonPicker {
-
+.centerButtons {
+    display: flex;
+    gap: 0.5rem;
 }
 
 .userInfo
