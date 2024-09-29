@@ -1,10 +1,14 @@
 package com.hackabud.backend.entity;
 
+import jakarta.persistence.CascadeType;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
+import jakarta.persistence.OneToMany;
 import jakarta.validation.constraints.NotBlank;
+
+import java.util.List;
 
 @Entity
 public class User {
@@ -25,6 +29,9 @@ public class User {
     private String experienceLevel;
 
     private String school;
+
+    @OneToMany(mappedBy = "user", cascade = CascadeType.ALL, orphanRemoval = true)
+    private List<Notification> notifications;
 
     public Long getId() {
         return id;
@@ -73,4 +80,13 @@ public class User {
     public void setSchool(String school) {
         this.school = school;
     }
+
+    public List<Notification> geNotifications() {
+        return this.notifications;
+    }
+
+    public void setNotifications(List<Notification> notifications) {
+        this.notifications = notifications;
+    }
+
 }

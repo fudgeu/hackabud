@@ -20,7 +20,7 @@ public class SecurityConfig {
 			.authorizeHttpRequests(r -> r
 				.requestMatchers("/api/sec/**").authenticated() // Allow access if authenticated
 				.requestMatchers("/**").permitAll())
-			.oauth2ResourceServer(Customizer.withDefaults());
+			.oauth2ResourceServer(res -> res.jwt(Customizer.withDefaults()));
 		return http.build();
 	}
     
