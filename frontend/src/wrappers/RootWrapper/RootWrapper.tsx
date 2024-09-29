@@ -8,11 +8,16 @@ import { useEffect } from 'react'
 
 import LoginButton from '../../pages/LoginButton/LoginButton.tsx'
 import LogoutButton from '../../pages/LogoutButton/LogoutButton.tsx'
+import { Code } from '@mui/icons-material'
+import SelectEventModal from '../../modals/SelectEventModal/SelectEventModal.tsx'
 import UserProfile from '../../components/UserProfile/UserProfile.tsx'
 
 
 export default function RootWrapper() {
   const [modalStack, setModalStack] = useState<ReactNode[]>([])
+  const [curEventName, setCurEventName] = useState('Shellhacks 2024')
+
+  // Authentication stuffs
   const { user, isLoading, isAuthenticated } = useAuth0()
   useEffect(() => {
     if (isAuthenticated) {
@@ -21,7 +26,6 @@ export default function RootWrapper() {
       console.log('Not Authenticated!')
     }
   }, [isAuthenticated])
-
 
   return (
     <ModalContext.Provider value={{
@@ -33,7 +37,13 @@ export default function RootWrapper() {
           <h1>HackaBud</h1>
 
           <div className={styles.hackathonPicker}>
-            <Button variant="accent">Hackathon Picker</Button>
+            <Button
+              variant="outlined"
+              startDecorator={<Code />}
+              onClick={() => setModalStack([...modalStack, <SelectEventModal />])}
+            >
+              {curEventName}
+            </Button>
           </div>
 
           <div>
