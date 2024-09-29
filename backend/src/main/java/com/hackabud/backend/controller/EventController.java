@@ -28,7 +28,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 
 
 @RestController
-@RequestMapping("/event")
+@RequestMapping("/sec/event")
 public class EventController {
     private EventService eventService;
     private TeamService teamService;

@@ -15,7 +15,7 @@ import jakarta.validation.Valid;
 
 
 @RestController
-@RequestMapping("/post")
+@RequestMapping("/sec/post")
 public class PostController {
     private PostService service;
 
