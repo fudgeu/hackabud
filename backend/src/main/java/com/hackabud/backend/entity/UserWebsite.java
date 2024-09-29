@@ -5,7 +5,7 @@ import jakarta.persistence.Id;
 import jakarta.validation.constraints.NotBlank;
 
 @Entity
-public class UserWebsites {
+public class UserWebsite {
     @Id
     private Long userId;
 

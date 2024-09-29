@@ -1,14 +1,6 @@
-package com.hackabud.backend.entity;
+package com.hackabud.backend.response;
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
-import jakarta.persistence.Id;
-
-@Entity
-public class EventTeam {
-    @Id
-    @GeneratedValue(strategy=GenerationType.AUTO)
+public class EventTeamJson {
     private Long id;
 
     private Long eventId;
@@ -38,4 +30,5 @@ public class EventTeam {
     public void setLeaderId(Long leaderId) {
         this.leaderId = leaderId;
     }
+
 }
