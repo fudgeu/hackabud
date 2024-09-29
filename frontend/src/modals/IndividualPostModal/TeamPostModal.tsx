@@ -2,10 +2,10 @@ import styles from './styles.module.css'
 import PostInfo from '../../components/PostInfo/PostInfo.tsx'
 import Modal from '../Modal/Modal.tsx'
 import Button from '../../components/Button/Button.tsx'
-import { HeartBroken, OpenInFull, School, Stars } from '@mui/icons-material'
+import {HeartBroken, Mail, School, Stars} from '@mui/icons-material'
 import Tidbit from '../../components/Tidbit/Tidbit.tsx'
 
-interface IndividualPostModalProps {
+interface TeamPostModalProps {
   name: string,
   subject: string,
   members: number,
@@ -13,9 +13,10 @@ interface IndividualPostModalProps {
   description: string,
   school: string,
   skillLevel: string,
+  memberNames: string[]
 }
 
-export default function IndividualPostModal({ name, subject, members, maxMembers, description, school, skillLevel }: IndividualPostModalProps) {
+export default function TeamPostModal({ name, subject, members, maxMembers, description, school, skillLevel, memberNames }: TeamPostModalProps) {
   return (
     <Modal>
       <div className={styles.container}>
@@ -35,10 +36,13 @@ export default function IndividualPostModal({ name, subject, members, maxMembers
             <p className={styles.sectionText}>Description</p>
             <p>{description}</p>
           </div>
-        </div>
 
-        <div className={styles.buttons}>
-          <Button startDecorator={<HeartBroken/>} variant="accent">Invite!</Button>
+          <div className={styles.z}>
+            <p className={styles.sectionText}>Members</p>
+            <div className={styles.membersGrid}>
+              {members}
+            </div>
+          </div>
         </div>
       </div>
     </Modal>

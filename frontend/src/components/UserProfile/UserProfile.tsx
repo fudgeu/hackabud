@@ -27,7 +27,6 @@ const UserProfile = () => {
                 {isDropdownOpen && (
                   <div className={styles.dropdown}>
                     <ul>
-                      <li>Profile Settings</li>
                       <LogoutButton />
                     </ul>
                   </div>

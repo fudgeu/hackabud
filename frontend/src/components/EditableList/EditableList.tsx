@@ -4,18 +4,20 @@ import Button from '../Button/Button.tsx'
 import { Close } from '@mui/icons-material'
 
 interface EditableListProps {
+  variant?: string,
   values: string[],
   updateValues: (newValues: string[]) => void,
   placeholder?: string,
 }
 
-export default function EditableList({ values, updateValues, placeholder }: EditableListProps) {
+export default function EditableList({ variant = 'transparent', values, updateValues, placeholder }: EditableListProps) {
   return (
     <div className={styles.list}>
       {
         values.map((value, i) => (
           <div className={styles.listItem}>
             <Textbox
+              variant={variant}
               value={value}
               onChange={(e) => {
                 const newList = [...values.slice(0, i), e.target.value, ...values.slice(i + 1)]

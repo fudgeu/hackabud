@@ -7,8 +7,11 @@
 .content {
     display: flex;
     flex-direction: column;
-    width: 30rem;
+    width: 100%;
+    gap: 1rem;
 }
+
+.z {display: flex; flex-direction: column}
 
 .sectionText {
     font-weight: bold;
@@ -19,4 +22,9 @@
     display: flex;
     width: 100%;
     justify-content: end;
+}
+
+.membersGrid {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
 }

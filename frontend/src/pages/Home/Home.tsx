@@ -1,7 +1,7 @@
 import styles from './styles.module.css'
 import { useAuth0 } from '@auth0/auth0-react'
 import Button from '../../components/Button/Button.tsx'
-import IndividualPost from '../../components/IndividualPost/IndividualPost.tsx'
+import FormattedPost from '../../components/FormattedPost/FormattedPost.tsx'
 import { useContext } from 'react'
 import { ModalContext, SessionContext } from '../../contexts.ts'
 import CreatePostChooserModal from '../../modals/CreatePostChooserModal/CreatePostChooserModal.tsx'
@@ -49,7 +49,7 @@ export default function Home() {
 
       <div className={session.posts.length === 0 ? '' : styles.grid}>
         {session.posts.map((post) => (
-          <IndividualPost post={post} />
+          <FormattedPost post={post} />
         ))}
 
         {session.posts.length === 0 && (

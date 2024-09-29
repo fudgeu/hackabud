@@ -22,21 +22,31 @@ export default function CreateIndividualPostModal() {
   const modalHandler = useContext(ModalContext)
   const session = useContext(SessionContext)
 
+  // const handleSubmitForm1 = (e: FormEvent) => {
+  //   e.preventDefault()
+  //   setCurStep(2)
+  // }
+
   const handleSubmitForm1 = (e: FormEvent) => {
     e.preventDefault()
-    setCurStep(2)
-  }
 
-  const handleSubmitForm2 = (e: FormEvent) => {
-    e.preventDefault()
+    // First create team
+    // fetch(`${URL}/team/`, {
+    //   method: 'POST',
+    //   headers: { 'Content-Type': 'application/json' },
+    //   body: JSON.stringify({
+    //     eventId: session.eventId,
+    //   }),
+    // })
 
     // Submit to server
-    fetch(`${URL}/post`, {
+    fetch(`${URL}/sec/post`, {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify({
         eventId: session.eventId,
-        authorId: -1,
+        authorType: 'USER',
+        authorId: session.userId,
         subject: subjectVal,
         body: descriptionVal,
       }),
@@ -58,27 +68,25 @@ export default function CreateIndividualPostModal() {
         <Field label="School" value={schoolVal} placeholder="College University" onChange={setSchoolVal} />
         <Field label="Skill level" value={skillVal} placeholder="Expert" required onChange={setSkillVal} />
         <Field label="Goal" value={goalVal} placeholder="To win!" onChange={setGoalVal} />
+        <Field label="More info about yourself" value={descriptionVal} onChange={setDescriptionVal} />
 
         <div className={styles.buttons}>
-          <Button type="submit" variant="accent">Next</Button>
+          <Button type="submit" variant="accent">Post</Button>
         </div>
       </form>
     )
   }
 
   const renderForm2 = () => {
-    return (
-      <form className={styles.form} onSubmit={handleSubmitForm2}>
-        <ListField label="Websites" values={websiteList} setValues={setWebsiteList} placeholder="URL" />
-        <ListField label="Skills" values={skillsList} setValues={setSkillsList} placeholder="Skill" />
-        <Field label="More info about yourself" value={descriptionVal} onChange={setDescriptionVal} />
-
-        <div className={styles.buttons}>
-          <Button type="button" variant="plain" onClick={() => setCurStep(1)}>Go back</Button>
-          <Button type="submit" variant="accent">Post</Button>
-        </div>
-      </form>
-    )
+    // return (
+    //   <form className={styles.form} onSubmit={handleSubmitForm2}>
+    //
+    //     <div className={styles.buttons}>
+    //       <Button type="button" variant="plain" onClick={() => setCurStep(1)}>Go back</Button>
+    //       <Button type="submit" variant="accent">Post</Button>
+    //     </div>
+    //   </form>
+    // )
   }
 
   return (

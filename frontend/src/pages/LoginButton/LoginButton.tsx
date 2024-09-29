@@ -19,7 +19,7 @@ const LoginButton = () => {
           variant="login"
           onClick={() => handleLogin()}
         >
-          Log In
+          Log In / Register
         </Button>
       </div>
     )
