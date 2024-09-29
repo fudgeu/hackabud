@@ -1,7 +1,5 @@
 package com.hackabud.backend.controller;
 
-import java.util.NoSuchElementException;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -10,7 +8,6 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.hackabud.backend.request.OAuthIdJson;
 import com.hackabud.backend.response.OAuthUserJson;
 import com.hackabud.backend.service.OAuthService;
 
@@ -27,16 +24,16 @@ public class OAuthController {
     }
 
     @PostMapping("")
-    public ResponseEntity<Long> userRegistered(@RequestBody @Valid OAuthIdJson json) {
+    public ResponseEntity<Long> userRegistered(@RequestBody @Valid String string) {
         try {
-            return ResponseEntity.status(HttpStatus.OK).body(service.tryGetUserId(json.getOAuthId()).get());
-        } catch (NoSuchElementException e) {
+            return ResponseEntity.status(HttpStatus.OK).body(service.tryGetUserId(string).get(0));
+        } catch (IndexOutOfBoundsException e) {
             return ResponseEntity.status(HttpStatus.NOT_FOUND).body(null);
         }
     }
 
     @PostMapping("/new")
-    public ResponseEntity<OAuthUserJson> createNewUserBinding(@RequestBody OAuthUserJson json) {
+    public ResponseEntity<OAuthUserJson> createNewUserBinding(@RequestBody @Valid OAuthUserJson json) {
         return ResponseEntity.ok(service.addNewUserBinding(json));
     }
        

@@ -15,8 +15,8 @@ public class OAuthService {
         this.repo = repo;
     }
 
-    public Optional<Long> tryGetUserId(String OAuthId) {
-        return repo.findUserIdByOAuthId(OAuthId);
+    public List<Long> tryGetUserId(String OAuthId) {
+        return repo.findByOAuthId(OAuthId).stream().map(e -> e.getUserId()).toList();
     }
 
     public OAuthUserJson addNewUserBinding(OAuthUserJson json) {

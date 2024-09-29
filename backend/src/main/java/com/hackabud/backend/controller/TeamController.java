@@ -31,6 +31,12 @@ public class TeamController {
         return null;
     }
 
+    @PostMapping("/new")
+    public ResponseEntity<TeamMemberJson> newTeam(@RequestBody @Valid EventTeamJson json) {
+        //return ResponseEntity.ok(service.);
+        return null;
+    }
+
     @PostMapping("")
     public ResponseEntity<TeamMemberJson> addTeamMember(@RequestBody @Valid TeamMemberJson json) {
         //return ResponseEntity.ok(service.);
