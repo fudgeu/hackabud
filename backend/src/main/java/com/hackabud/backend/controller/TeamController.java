@@ -12,7 +12,7 @@ import com.hackabud.backend.service.TeamService;
 
 
 @RestController
-@RequestMapping("/sec/team")
+@RequestMapping("/api/sec/team")
 public class TeamController {
     private TeamService service;
 

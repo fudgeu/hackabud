@@ -17,7 +17,7 @@ import com.hackabud.backend.service.exception.NotFoundException;
 
 
 @RestController
-@RequestMapping("/sec/notif")
+@RequestMapping("/api/sec/notif")
 public class NotificationController {
     private NotificationService notifService;
     

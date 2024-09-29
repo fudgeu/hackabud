@@ -27,7 +27,7 @@ import jakarta.validation.Valid;
 
 
 @RestController
-@RequestMapping("/sec/event")
+@RequestMapping("/api/sec/event")
 public class EventController {
     private EventService eventService;
     private TeamService teamService;

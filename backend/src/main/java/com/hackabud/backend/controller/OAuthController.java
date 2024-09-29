@@ -15,7 +15,7 @@ import jakarta.validation.Valid;
 
 
 @RestController
-@RequestMapping("/oauth")
+@RequestMapping("/api/oauth")
 public class OAuthController {
     private OAuthService service;
 

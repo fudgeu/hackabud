@@ -11,14 +11,15 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.hackabud.backend.response.UserJson;
+import com.hackabud.backend.response.UserSkillJson;
 import com.hackabud.backend.service.UserService;
 import com.hackabud.backend.service.exception.BadRequestException;
 import com.hackabud.backend.service.exception.NotFoundException;
-
+import java.util.*;
 import jakarta.validation.Valid;
 
 @RestController
-@RequestMapping("/sec/user")
+@RequestMapping("/api/sec/user")
 public class UserController {
     private UserService service;
 
@@ -43,6 +44,11 @@ public class UserController {
     public ResponseEntity<UserJson> addNewUser(@RequestBody @Valid UserJson json) {
         UserJson savedJson = service.addNewUser(json);
         return ResponseEntity.status(HttpStatus.OK).body(savedJson);
+    }
+
+    @GetMapping("/{id}/skill")
+    public ResponseEntity<List<UserSkillJson>> findAllSkills(@PathVariable("id") Long id) {
+        return ResponseEntity.status(HttpStatus.OK).body(service.findAllSkills(id));
     }
     
 }
