@@ -32,9 +32,9 @@ const router = createBrowserRouter([
 createRoot(document.getElementById('root')!).render(
   <StrictMode>
     <Auth0Provider
-      domain="dev-fonj0d63gm875arj.us.auth0.com"
-      clientId="pAgZ0Jkd5QnwNTcD2q6JP7r4E75yGP1L"
-      authorizationParams={{ redirect_uri: 'http://localhost:5173/home' }}
+      domain="dev-xwer71pzdtvuk22b.us.auth0.com"
+      clientId="H2olDrViN6O05UXnrzH5mmqakC9eAzYZ"
+      authorizationParams={{ redirect_uri: 'https://hackabud.k-puig.com/home' }}
     >
       <RouterProvider router={router} />
     </Auth0Provider>

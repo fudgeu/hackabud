@@ -1,1 +1,1 @@
-export const URL = 'http://hackabud.k-puig.com:8080'
+export const URL = 'https://hackabud.k-puig.com/api'

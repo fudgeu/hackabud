@@ -68,8 +68,8 @@
     background-color: #008080;
     border-top: solid 0.10rem #ffffff44;
     border-bottom: solid 0.10rem #00000005;
-    box-shadow: 4px 4px 10px #727272,
-    -3px -3px 10px #d1fff7;
+    /*box-shadow: 4px 4px 10px #727272,*/
+    /*-3px -3px 10px #d1fff7;*/
     color: white;
 
     &:hover {
@@ -78,7 +78,8 @@
 }
 
 .fill {
-    width: 100%;
+    align-self: stretch;
+    justify-content: center;
 }
 
 .square {

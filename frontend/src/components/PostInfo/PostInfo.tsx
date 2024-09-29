@@ -6,24 +6,28 @@ import { ReactNode } from 'react'
 interface PostInfoProps {
   name: string,
   subject: string,
+  members: number,
+  maxMembers: number,
   tidbits: ReactNode | ReactNode[],
   buttons?: ReactNode | ReactNode[],
 }
 
-export default function PostInfo({ name, subject, buttons, tidbits }: PostInfoProps) {
+export default function PostInfo({ name, subject, buttons, members, maxMembers, tidbits }: PostInfoProps) {
   return (
     <div className={styles.header}>
       {/* Left side */}
       <div className={styles.headerLeft}>
         <div className={styles.profileIcons}>
-          <Person />
+          {members <= 1 ? <Person /> : <Group />}
         </div>
 
         <div className={styles.headerText}>
           <h3>{name}</h3>
           <h4>{subject}</h4>
           <div className={styles.tidbits}>
-            <Tidbit icon={<Group />}>1/4 members</Tidbit>
+            <Tidbit icon={members === 1 ? <Person /> : <Group />}>
+              {members === 1 ? 'Individual' : `${members}/${maxMembers} members`}
+            </Tidbit>
             {tidbits}
           </div>
         </div>

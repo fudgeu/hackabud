@@ -31,12 +31,12 @@ export default function CreateIndividualPostModal() {
     e.preventDefault()
 
     // Submit to server
-    fetch(`${URL}/post`, {
+    fetch(`${URL}/sec/post`, {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify({
         eventId: session.eventId,
-        authorId: -1,
+        authorId: session.userId,
         subject: subjectVal,
         body: descriptionVal,
       }),

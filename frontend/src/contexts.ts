@@ -8,6 +8,10 @@ type ModalProvider = {
 type Session = {
   eventId: number,
   eventName: string,
+  eventMaxMembers: number,
+  userId: number,
+  isInTeam: boolean,
+  teamId: number | undefined,
   posts: Post[],
   reload: () => void,
   setEventId: (id: number) => void,
@@ -21,6 +25,10 @@ export const ModalContext = createContext<ModalProvider>({
 export const SessionContext = createContext<Session>({
   eventId: -1,
   eventName: '',
+  eventMaxMembers: 0,
+  userId: -1,
+  isInTeam: false,
+  teamId: undefined,
   posts: [],
   reload: () => {},
   setEventId: () => {},

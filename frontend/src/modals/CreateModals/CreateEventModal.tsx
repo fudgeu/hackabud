@@ -20,7 +20,7 @@ export default function CreateEventModal({ setSelectedEvent }: CreateEventModalP
   }
 
   const doUpload = () => {
-    fetch(`${URL}/event`, {
+    fetch(`${URL}/sec/event`, {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify({
@@ -29,7 +29,7 @@ export default function CreateEventModal({ setSelectedEvent }: CreateEventModalP
         description: description,
         image: '',
         location: location,
-        teamSize: teamSizeLimit,
+        teamSize: parseInt(teamSizeLimit),
       }),
     }).then((raw) => {
       raw.json().then((res) => {
